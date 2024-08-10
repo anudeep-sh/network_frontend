@@ -9,6 +9,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const InputBox = ({
+  usingInDarkMode,
   label,
   type,
   value,
@@ -32,6 +33,7 @@ const InputBox = ({
         marginRight={"auto"}
         mb={"5px"}
         fontSize={"12px"}
+        sx={{ color: usingInDarkMode ? "#f2f2f2" : "#000000de" }}
       >
         {label}
       </Typography>
@@ -63,12 +65,14 @@ const InputBox = ({
         }
         content="center"
         sx={{
+          color: "#f2f2f2",
           "& .MuiInputBase-root": {
             height: "40px",
+            color: usingInDarkMode ? "#f2f2f2" : "#000000de",
           },
-          '& .MuiInputBase-input': {
-            padding: '9px 12px',
-          }
+          "& .MuiInputBase-input": {
+            padding: "9px 12px",
+          },
         }}
       />
     </Box>

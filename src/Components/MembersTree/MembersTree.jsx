@@ -101,13 +101,6 @@ function MembersTree() {
 
   return (
     <>
-      <div className="customNodeContainer">
-        {/* <img src={userImg} alt="userImg" className="nodeUserImage" /> */}
-        <div className="userDetails">
-          <h3 className="nodeUsername">{"sergio"}</h3>
-          <p className="nodeShortCodeId">ID:qwekhdbwu</p>
-        </div>
-      </div>
       <div id="treeWrapper" style={{ width: "100%", height: "500px" }}>
         {show && (
           <Tree
@@ -123,12 +116,6 @@ function MembersTree() {
             leafNodeClassName="node__leaf"
             nodeLabelComponent={{
               render: <NodeLabel className="myLabelComponentInSvg" />,
-            //   foreignObjectWrapper: {
-            //     width: 220,
-            //     height: 200,
-            //     y: -50,
-            //     x: -100,
-            //   },
             }}
             initialDepth={0.02}
           />

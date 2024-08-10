@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 
-export default function DashBoardWidget({ icon, title, value }) {
+export default function DashBoardWidget({ icon, title, value,hubs }) {
   return (
     <Box
       sx={{
@@ -12,10 +12,6 @@ export default function DashBoardWidget({ icon, title, value }) {
       }}
     >
       <Box
-        // width={{
-        //   xs: "200px",
-        //   md: "200px",
-        // }}
         sx={{
           backgroundColor: "#2C2C2E",
           padding: {
@@ -23,7 +19,6 @@ export default function DashBoardWidget({ icon, title, value }) {
             sm: "16px 20px 16px 20px",
           },
           borderRadius: "8px",
-          // marginBottom: "20px",
           height: "88px",
           display: "flex",
           alignItems: "center",
@@ -64,7 +59,7 @@ export default function DashBoardWidget({ icon, title, value }) {
             {value}
           </Typography>
         </Typography>
-        <img src={icon} alt={title} height={40} width={40} />
+        {hubs?<img src={icon} alt={title}  />:<img src={icon} alt={title} height={40} width={40} />}
       </Box>
     </Box>
   );

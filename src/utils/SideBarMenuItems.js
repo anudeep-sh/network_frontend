@@ -47,6 +47,20 @@ export const SideBarItems = [
   },
   {
     Icon: (
+      <DiamondOutlined
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/hubs",
+    title: "Hubs",
+    active: true,
+    onClick: () => console.log("Hubs"),
+  },
+  {
+    Icon: (
       <Diversity1
         sx={{
           height: "20px",

@@ -23,6 +23,7 @@ import Support from "./Pages/Support";
 import { ToastContainer } from "react-toastify";
 import PageNotFound from "./Pages/PageNotFound";
 import ProtectedRoute from "./Routes/ProtectedRoutes";
+import Hubs from "./Pages/Hubs/Hubs";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
@@ -76,6 +77,7 @@ function App() {
                   path="/dashboard"
                   element={<DashBoard setActiveSideBar={setActiveSideBar} />}
                 />
+                <Route path="/hubs" element={<Hubs  setActiveSideBar={setActiveSideBar}/>} />
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/network" element={<Network />} />
                 <Route path="/my-referrals" element={<MyReferrals />} />
