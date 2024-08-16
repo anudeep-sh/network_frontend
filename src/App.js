@@ -9,13 +9,13 @@ import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import DashBoard from "./Pages/Dashboard";
 import Network from "./Pages/Network";
-import IncomeHistory from "./Pages/IncomeHistory";
+import WithDrawal from "./Pages/IncomeHistory";
 import Profile from "./Pages/Profile";
 import Packages from "./Pages/Packages";
 import MyReferrals from "./Pages/Referrals";
 import TotalTeams from "./Pages/TotalTeams";
 import Transactions from "./Pages/Transactions";
-import TransferPayment from "./Pages/TransferPayment";
+import WithDrawalHistory from "./Pages/TransferPayment";
 import Withdraw from "./Pages/Withdraw";
 import AddMember from "./Pages/AddMember";
 import ReferralLink from "./Pages/ReferralLink";
@@ -83,9 +83,8 @@ function App() {
                 <Route path="/my-referrals" element={<MyReferrals />} />
                 <Route path="/total-teams" element={<TotalTeams />} />
                 <Route path="/transactions" element={<Transactions />} />
-                <Route path="/transfer-payment" element={<TransferPayment />} />
-                <Route path="/withdraw" element={<Withdraw />} />
-                <Route path="/income-history" element={<IncomeHistory />} />
+                <Route path="/withdrawal-history" element={<WithDrawalHistory />} />
+                <Route path="/withdrawal" element={<WithDrawal />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/add-member" element={<AddMember />} />
                 <Route path="/referral-link" element={<ReferralLink />} />

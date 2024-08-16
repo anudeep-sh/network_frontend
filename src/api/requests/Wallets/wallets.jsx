@@ -22,6 +22,11 @@ export const WalletsRequests = {
     });
     return response;
   },
+
+  WithdrawalRequestById: async () => {
+    const response = await performRequestBackend("/withdrawal", "GET");
+    return response;
+  },
   // approveJoin: async ( shortcode, level ) => {
   //   const response = await performRequestBackend("POST", {
   //     shortcode,

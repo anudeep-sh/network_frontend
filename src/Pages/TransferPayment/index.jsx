@@ -1,7 +1,35 @@
-import { Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
+import { WalletsRequests } from "../../api/requests/Wallets/wallets";
 
-export default function TransferPayment() {
+export default function WithDrawalHistory() {
+  const [walletHistory, setWalletHistory] = useState([]);
+
+  const handleGetwalletHistory = async () => {
+    try {
+      const response = await WalletsRequests.WithdrawalRequestById();
+      console.log(response,"cocdc")
+      setWalletHistory(response); // Update the state with the new data
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleGetwalletHistory();
+  }, []);
+
   return (
     <Box
       sx={{
@@ -10,7 +38,50 @@ export default function TransferPayment() {
       }}
       height={"100vh"}
     >
-      Add Member
+      <Box
+        sx={{
+          backgroundColor: "#2C2C2E",
+          mt: 3,
+          p: 3,
+          borderRadius: "8px",
+          mr: { xs: 2, md: 3 },
+          ml: { xs: 2, md: 3 },
+        }}
+      >
+        <Typography
+          variant="h6"
+          sx={{ color: "#F2F2F7", marginBottom: "16px" }}
+        >
+          Withdrawal Request
+        </Typography>
+
+        <TableContainer component={Paper} sx={{ backgroundColor: "#2C2C2E" }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ color: "#F2F2F7" }}>Amount (Rs.)</TableCell>
+                <TableCell sx={{ color: "#F2F2F7" }}>Status</TableCell>
+                <TableCell sx={{ color: "#F2F2F7" }}>Date</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {walletHistory?.map((transaction) => (
+                <TableRow key={transaction.id}>
+                  <TableCell sx={{ color: "#F2F2F7" }}>
+                    {transaction.amount}
+                  </TableCell>
+                  <TableCell sx={{ color: "#F2F2F7" }}>
+                    {transaction.status}
+                  </TableCell>
+                  <TableCell sx={{ color: "#A1A1AA" }}>
+                    {new Date(transaction.timestamp).toLocaleString()}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
     </Box>
   );
 }

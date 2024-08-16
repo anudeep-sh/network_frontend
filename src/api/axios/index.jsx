@@ -20,6 +20,7 @@ const performRequestBackend = async (url, method, body, params) => {
       })
       .catch((error) => {
         console.log("Error in performRequestBackend", error);
+        reject(error)
       });
   });
 };

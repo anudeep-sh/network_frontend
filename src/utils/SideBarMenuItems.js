@@ -125,25 +125,10 @@ export const SideBarItems = [
         }}
       />
     ),
-    path: "/transfer-payment",
-    title: "Transfer Payment",
+    path: "/withdrawal-history",
+    title: "WithDrawal History",
     active: true,
     onClick: () => console.log("Transfer money"),
-  },
-  {
-    Icon: (
-      <ReceiptLong
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/withdraw",
-    title: "Withdraw",
-    menuList: ["Withdraw", "Withdraw history"],
-    active: true,
-    onClick: () => console.log("Withdraw"),
   },
   {
     Icon: (
@@ -154,8 +139,8 @@ export const SideBarItems = [
         }}
       />
     ),
-    path: "/income-history",
-    title: "Income History",
+    path: "/withdrawal",
+    title: "WithDrawal",
     active: true,
     onClick: () => console.log("Income history"),
   },

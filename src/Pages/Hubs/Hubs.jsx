@@ -21,6 +21,7 @@ import { hub } from "../../api/requests/hubs/hubs";
 const Hubs = ({ setActiveSideBar }) => {
   const [member, setMember] = useState({ shortcode: "", level: 4 });
   const [hubsData, setHubsData] = useState([]);
+  const [quotaData, setQuotaData] = useState(null);
 
   // Mapping of level to corresponding images
   const levelImages = {
@@ -47,18 +48,32 @@ console.log(updatedHubsData)
     }
   };
 
+  const getQuotas = async () => {
+    try {
+      const data = await hub.getQuotas();
+      setQuotaData(data.quota); 
+    } catch (error) {
+      alert(error?.response?.data)
+      console.log(error,"cool");
+    }
+  };
  
   useEffect(() => {
     handleGetHubs();
+    getQuotas()
   }, []);
   const handleSubmit = async () => {
     try {
       const data = await hub.addMember(member.shortcode, member.level);
       alert("successfully joined");
+      getQuotas()
     } catch (error) {
+      alert(error?.response?.data)
       console.log(error);
     }
   };
+
+  
 
   // Function to update the shortcode and level
   const updateMember = (newShortcode, newLevel) => {
@@ -219,6 +234,68 @@ console.log(updatedHubsData)
             Join
           </Button>
         </Box>
+      </Box>
+
+      <Box
+        sx={{
+          backgroundColor: "#2C2C2E",
+          padding: {
+            xs: "12px 16px 12px 16px",
+            sm: "16px 20px 16px 20px",
+          },
+          borderRadius: "8px",
+          height: "max-content",
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "flex-start",
+          flexDirection: "column",
+          mr: { xs: 2, md: 3 },
+          ml: { xs: 2, md: 3 },
+          mt: 3,
+          width: "25%",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "18px",
+            color: "#F2F2F7",
+            fontWeight: "500",
+            textAlign: "left",
+            mb: 3,
+          }}
+        >
+         Quotas Available
+        </Typography>
+        <Box
+      sx={{
+        backgroundColor: "#EF4444", // Red background
+        padding: "16px",
+        borderRadius: "8px",
+        width: "75%",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow
+        color: "#FFFFFF",
+      }}
+    >
+      <Typography sx={{ fontSize: "18px", fontWeight: "500", mb: 2 }}>
+        Quotas Available
+      </Typography>
+      <Typography sx={{ fontSize: "16px" }}>
+        Quota: {quotaData?.quota}
+      </Typography>
+      <Typography sx={{ fontSize: "16px", mb: 1 }}>
+        Name: {quotaData?.name}
+      </Typography>
+      <Typography sx={{ fontSize: "16px", mb: 1 }}>
+        Shortcode: {quotaData?.shortcode}
+      </Typography>
+      <Typography sx={{ fontSize: "16px", mb: 1 }}>
+        Email: {quotaData?.emailId}
+      </Typography>
+      <Typography sx={{ fontSize: "16px", mb: 1 }}>
+        Status: {quotaData?.status}
+      </Typography>
+      
+    </Box>
       </Box>
     </Box>
   );
