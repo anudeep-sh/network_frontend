@@ -12,7 +12,10 @@ export default function Withdraw() {
     try {
       // API call to request a withdrawal
       console.log(amount)
-      const response = await WalletsRequests.WithdrawalRequest( amount );
+      if(amount){
+
+        const response = await WalletsRequests.WithdrawalRequest(  parseInt(amount));
+      
       
       if (response) {
         alert("Withdrawal request submitted successfully!");
@@ -20,6 +23,7 @@ export default function Withdraw() {
       } else {
         alert("Something went wrong, please try again.");
       }
+    }
     } catch (error) {
       console.error("Error submitting withdrawal request:", error);
       alert("An error occurred. Please try again later.");

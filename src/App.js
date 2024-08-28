@@ -17,20 +17,23 @@ import TotalTeams from "./Pages/TotalTeams";
 import Transactions from "./Pages/Transactions";
 import WithDrawalHistory from "./Pages/TransferPayment";
 import Withdraw from "./Pages/Withdraw";
-import AddMember from "./Pages/AddMember";
-import ReferralLink from "./Pages/ReferralLink";
+import AddMember from "./Pages/UserQuotas";
+import ReferralLink from "./Pages/UserWithdrawal";
 import Support from "./Pages/Support";
 import { ToastContainer } from "react-toastify";
 import PageNotFound from "./Pages/PageNotFound";
 import ProtectedRoute from "./Routes/ProtectedRoutes";
 import Hubs from "./Pages/Hubs/Hubs";
+import UserQuotas from "./Pages/UserQuotas";
+import UserWithdrawal from "./Pages/UserWithdrawal";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
 
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
-
+  const Admin = localStorage.getItem("Role" )==="ADMIN";
+  console.log(Admin, "admin");
   const Layout = () => {
     return (
       <>
@@ -77,17 +80,27 @@ function App() {
                   path="/dashboard"
                   element={<DashBoard setActiveSideBar={setActiveSideBar} />}
                 />
-                <Route path="/hubs" element={<Hubs  setActiveSideBar={setActiveSideBar}/>} />
+                <Route
+                  path="/hubs"
+                  element={<Hubs setActiveSideBar={setActiveSideBar} />}
+                />
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/network" element={<Network />} />
                 <Route path="/my-referrals" element={<MyReferrals />} />
                 <Route path="/total-teams" element={<TotalTeams />} />
                 <Route path="/transactions" element={<Transactions />} />
-                <Route path="/withdrawal-history" element={<WithDrawalHistory />} />
+                <Route
+                  path="/withdrawal-history"
+                  element={<WithDrawalHistory />}
+                />
                 <Route path="/withdrawal" element={<WithDrawal />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/add-member" element={<AddMember />} />
-                <Route path="/referral-link" element={<ReferralLink />} />
+                {Admin && (
+                  <>
+                    <Route path="/user-quotas" element={<UserQuotas setActiveSideBar={setActiveSideBar} />} />
+                    <Route path="/user-withdrawal" element={<UserWithdrawal setActiveSideBar={setActiveSideBar}/>} />
+                  </>
+                )}
                 <Route path="/support" element={<Support />} />
               </Route>
             </Route>

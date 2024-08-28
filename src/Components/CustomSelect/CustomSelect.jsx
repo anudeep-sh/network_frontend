@@ -10,10 +10,11 @@ const CustomSelect = ({
   helperText = "",
   error = false,
   options = [],
+  disabled
 }) => {
   return (
-    <Box mb={"25px"} width={"100%"}>
-      <Typography
+    <Box mb={"25px"} width={"100%"} sx={{mb:0}}>
+     {label&& <Typography
         display={"flex"}
         marginRight={"auto"}
         mb={"5px"}
@@ -21,7 +22,7 @@ const CustomSelect = ({
         color="#F2F2F7" // Adjust the color as needed
       >
         {label}
-      </Typography>
+      </Typography>}
       <FormControl
         required={required}
         fullWidth
@@ -53,10 +54,17 @@ const CustomSelect = ({
         <Select
           value={value}
           onChange={onChange}
+          disabled={disabled}
           displayEmpty
           sx={{
             "& .MuiSelect-icon": {
               color: "#F2F2F7", // Color of dropdown icon
+            },
+            '&:hover fieldset': {
+              borderWidth: '1px', // Set border width to 1px on hover
+            },
+            '&.Mui-focused fieldset': {
+              borderWidth: '1px', // Ensure border width is 1px when focused
             },
           }}
         >

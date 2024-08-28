@@ -2,11 +2,13 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SideBarItem from "../../Components/SideBarItem";
 import { sideBarBottomItems, SideBarItems } from "../../utils/SideBarMenuItems";
 import { useLocation } from "react-router-dom";
+import { AdminSideBarMenuItems } from "../../utils/AdminSideBarMenuItems";
 
 export default function SideBar({ activeSideBar, setActiveSideBar }) {
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { pathname } = useLocation();
+  const Admin = localStorage.getItem("Role") === "ADMIN";
 
   return (
     <Box
@@ -62,6 +64,26 @@ export default function SideBar({ activeSideBar, setActiveSideBar }) {
             />
           );
         })}
+        {Admin && (
+          <>
+            {AdminSideBarMenuItems.map((item, index) => {
+              return (
+                <SideBarItem
+                  key={index}
+                  index={index}
+                  Icon={item.Icon}
+                  title={item.title}
+                  menuList={item.menuList}
+                  onClick={item.onClick}
+                  activeSideBar={activeSideBar}
+                  setActiveSideBar={setActiveSideBar}
+                  url={item.path}
+                  active={pathname === item.path}
+                />
+              );
+            })}
+          </>
+        )}
       </Box>
       <Box marginBottom={"10px"}>
         {sideBarBottomItems.map((item, index) => (

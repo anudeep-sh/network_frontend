@@ -31,20 +31,7 @@ export const SideBarItems = [
     active: true,
     onClick: () => console.log("Home"),
   },
-  {
-    Icon: (
-      <DiamondOutlined
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/packages",
-    title: "Packages",
-    active: true,
-    onClick: () => console.log("Packages"),
-  },
+
   {
     Icon: (
       <DiamondOutlined
@@ -59,49 +46,7 @@ export const SideBarItems = [
     active: true,
     onClick: () => console.log("Hubs"),
   },
-  {
-    Icon: (
-      <Diversity1
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/network",
-    title: "Network",
-    menuList: ["GeneaLogy", "Tree"],
-    active: true,
-    onClick: () => console.log("Network"),
-  },
-  {
-    Icon: (
-      <Diversity3
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/my-referrals",
-    title: "My Referrals",
-    active: true,
-    onClick: () => console.log("My referrals"),
-  },
-  {
-    Icon: (
-      <Group
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/total-teams",
-    title: "Total Teams",
-    active: true,
-    onClick: () => console.log("Total Teams"),
-  },
+
   {
     Icon: (
       <Payments
@@ -143,62 +88,6 @@ export const SideBarItems = [
     title: "WithDrawal",
     active: true,
     onClick: () => console.log("Income history"),
-  },
-  {
-    Icon: (
-      <Person
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/profile",
-    title: "Profile",
-    active: true,
-    onClick: () => console.log("Profile"),
-  },
-  {
-    Icon: (
-      <PersonAdd
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/add-member",
-    title: "Add Member",
-    active: true,
-    onClick: () => console.log("Add Member"),
-  },
-  {
-    Icon: (
-      <Link
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/referral-link",
-    title: "Referral Link",
-    active: true,
-    onClick: () => console.log("Referral Link"),
-  },
-  {
-    Icon: (
-      <SupportAgent
-        sx={{
-          height: "20px",
-          width: "20px",
-        }}
-      />
-    ),
-    path: "/support",
-    title: "Support",
-    active: true,
-    onClick: () => console.log("Support"),
   },
 ];
 

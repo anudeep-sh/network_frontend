@@ -70,6 +70,7 @@ const SignUp = () => {
         const Token = data?.token;
         if (Token) {
           localStorage.setItem("Token", Token);
+          localStorage.setItem("Role", data?.role);
           localStorage.setItem("user_details",JSON.stringify(data?.user))
           handleAlert(data?.msg, "success");
           navigate("/dashboard");

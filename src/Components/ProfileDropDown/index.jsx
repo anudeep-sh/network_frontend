@@ -29,9 +29,7 @@ export default function ProfileMenu({ anchorEl, open, handleMenuClose, Data }) {
         />
         <Typography fontSize={"16px"}>{Data?.name}</Typography>
       </ListItem>
-      <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My Referrals</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Total Team</MenuItem>
+
       <MenuItem onClick={handleMenuClose}>Transactions</MenuItem>
       <MenuItem
         onClick={() => {
