@@ -101,7 +101,7 @@ export const sideBarBottomItems = [
         }}
       />
     ),
-    path: "/settings",
+    path: "/profile",
     title: "Account",
     active: true,
     onClick: () => console.log("Account"),
@@ -118,6 +118,8 @@ export const sideBarBottomItems = [
     title: "Logout",
     onClick: () => {
       localStorage.removeItem("Token");
+      localStorage.removeItem("Role");
+      localStorage.removeItem("user_details");
       console.log("Logout");
       window.location.href = "/";
     },

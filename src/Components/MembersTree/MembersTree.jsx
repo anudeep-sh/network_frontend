@@ -1,78 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./MembersTree.css";
 import Tree from "react-d3-tree";
 import userImg from "../../Assets/Images/user1.png";
 import CustomNode from "./CustomNode/CustomNode";
 import { UserTreeApi } from "../../api/requests/network/network";
+import { ReactComponent as UserSvg } from "../../Assets/Images/SolidPersonIcon.svg";
 
-const svgSquare = {
-  shape: "rect",
-  shapeProps: {
-    width: 180,
-    height: 40,
-    x: 0,
-    y: -20,
-    color: "#ffffff",
-  },
-};
 
-const test = {
-  shape: "rect",
-  shapeProps: {
-    width: 0,
-    height: 0,
-    x: -20,
-    y: 20,
-    stroke: "#2F80ED",
-  },
-};
 
-const nodeStyle = (
-  <svg viewbox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-    <rect
-      width="80"
-      height="40"
-      x="10"
-      y="10"
-      style="fill: skyblue; stroke: cadetblue; stroke-width: 2;"
-    />
-  </svg>
-);
+const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
+  <g transform="translate(-146, -33)" onClick={toggleNode}>
+    {/* Centering the entire node */}
+    {/* Outer frame for the node */}
+    <rect width="292" height="66" rx="8" ry="8" fill="#242426" stroke="none" />
+    {/* Inner circle for the user icon */}
 
-const treeStyle = {
-  nodes: {
-    node: {
-      circle: <nodeStyle />,
-      name: <nodeStyle />,
-      attributes: <nodeStyle />,
-    },
-  },
-};
-
-const NodeLabel = ({ className, nodeData }) => (
-  <div
-    className={className}
-    style={{
-      background: "#ffffff",
-      height: "70px",
-      borderTop: "2px solid #2F80ED",
-      textAlign: "center",
-      // position: "fixed",
-      zIndex: "1000",
-      // left: "-10px",
-      boxShadow: "0px 10px 10px rgba(0, 0, 0, 0.1)",
-      padding: "5px 0",
-      borderRadius: "5px",
-    }}
-  >
-    {nodeData?.name}
-  </div>
+    {/* The imported SVG icon */}
+    <foreignObject x="16" y="12" width="42" height="42" stroke="none">
+      <UserSvg width="42" height="42" stroke="none" />
+    </foreignObject>
+    {/* Text block for the name and ID */}
+    <g transform="translate(74, 27)" stroke="none">
+      <text
+        fill="#DDDDE2"
+        fontSize="14"
+        fontFamily="Poppins"
+        fontWeight="500"
+        lineHeight="22"
+        letterSpacing="0.28"
+      >
+        {nodeDatum.name}
+      </text>
+      <text
+        fill="#B7B7BB"
+        fontSize="14"
+        fontFamily="Poppins"
+        fontWeight="400"
+        lineHeight="18"
+        letterSpacing="0.28"
+        dy="20"
+      >
+        ID: {nodeDatum.attributes?.shortcode || nodeDatum?.shortcode}
+      </text>
+    </g>
+  </g>
 );
 
 function MembersTree() {
   const [orgChart, setOrgChart] = useState([]);
   const [transFormedOrgChart, setTransFormedOrgChart] = useState([]);
   const [show, setShow] = useState(false);
+  const [translate, setTranslate] = useState({ x: 0, y: 0 });
+
+  const treeContainerRef = useRef(null);
 
   const handleNetwork = async () => {
     try {
@@ -99,25 +79,40 @@ function MembersTree() {
     setShow(true);
   }, [orgChart]);
 
+  useEffect(() => {
+    const updateTranslate = () => {
+      if (treeContainerRef.current) {
+        const { width, height } = treeContainerRef.current.getBoundingClientRect();
+        setTranslate({
+          x: width / 2,
+          y: height / 4,
+        });
+      }
+    };
+
+    updateTranslate();
+    window.addEventListener('resize', updateTranslate);
+
+    return () => {
+      window.removeEventListener('resize', updateTranslate);
+    };
+  }, [show]);
+
   return (
     <>
-      <div id="treeWrapper" style={{ width: "100%", height: "500px" }}>
+      <div id="treeWrapper"  ref={treeContainerRef} style={{ width: "100%", height: "500px" }}>
         {show && (
           <Tree
             data={transFormedOrgChart?.length > 0 ? transFormedOrgChart : {}}
-            nodeSvgShape={test}
             pathFunc="step"
-            separation={{ siblings: 2, nonSiblings: 2 }}
             orientation="vertical"
-            translate={{ x: 900, y: 100 }}
+            separation={{ siblings: 3, nonSiblings: 3 }}
             allowForeignObjects={true}
-            rootNodeClassName="node__root"
-            branchNodeClassName="node__branch"
-            leafNodeClassName="node__leaf"
-            nodeLabelComponent={{
-              render: <NodeLabel className="myLabelComponentInSvg" />,
-            }}
             initialDepth={0.02}
+            renderCustomNodeElement={renderRectSvgNode}
+            pathClassFunc={() => "custom-path-style"}
+            translate={translate}
+
           />
         )}
       </div>

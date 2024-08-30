@@ -23,14 +23,32 @@ export const hub = {
     const response = await performRequestBackend("/withdrawals-list/PENDING", "GET");
     return response;
   },
+  getApprovedWithdrawals: async () => {
+    const response = await performRequestBackend("/withdrawals-list/APPROVED", "GET");
+    return response;
+  },
+  getUsersWallet: async () => {
+    const response = await performRequestBackend("/users/wallet-level", "GET");
+    return response;
+  },
+  getUsersDetails: async () => {
+    const response = await performRequestBackend("/v1/users-details-by-id", "GET");
+    return response;
+  },
   postQuota: async (body) => {
-    console.log(body,"body")
     const response = await performRequestBackend("/post-quota", "POST",body);
     return response;
   },
   patchWithdrawalStatusUpdate: async (body) => {
-    console.log(body,"body")
     const response = await performRequestBackend("/update-withdrawal-request", "PATCH",body);
+    return response;
+  },
+  patchUpdateUserDetails: async (body) => {
+    const response = await performRequestBackend("/update-bank-details", "PATCH",body);
+    return response;
+  },
+  patchUpdateUserPassword: async (id,body) => {
+    const response = await performRequestBackend(`users/${id}/password`, "PATCH",body);
     return response;
   },
 };

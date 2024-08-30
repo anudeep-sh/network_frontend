@@ -26,6 +26,9 @@ import ProtectedRoute from "./Routes/ProtectedRoutes";
 import Hubs from "./Pages/Hubs/Hubs";
 import UserQuotas from "./Pages/UserQuotas";
 import UserWithdrawal from "./Pages/UserWithdrawal";
+import PendingUserWithdrawal from "./Pages/ApprovedWithdrawals";
+import ApprovedWithdrawals from "./Pages/ApprovedWithdrawals";
+import UsersDetailsWallet from "./Pages/UsersDetailsWallet/Index";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
@@ -99,6 +102,8 @@ function App() {
                   <>
                     <Route path="/user-quotas" element={<UserQuotas setActiveSideBar={setActiveSideBar} />} />
                     <Route path="/user-withdrawal" element={<UserWithdrawal setActiveSideBar={setActiveSideBar}/>} />
+                    <Route path="/approved-withdrawal" element={<ApprovedWithdrawals setActiveSideBar={setActiveSideBar}/>} />
+                    <Route path="/users-detail-withdrawal" element={<UsersDetailsWallet setActiveSideBar={setActiveSideBar}/>} />
                   </>
                 )}
                 <Route path="/support" element={<Support />} />

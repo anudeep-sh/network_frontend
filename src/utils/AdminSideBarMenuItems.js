@@ -29,4 +29,32 @@ export const AdminSideBarMenuItems = [
     active: true,
     onClick: () => console.log("Referral Link"),
   },
+  {
+    Icon: (
+      <Link
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/approved-withdrawal", 
+    title: "Approved Withdrawals",
+    active: true,
+    onClick: () => console.log("Referral Link"),
+  },
+  {
+    Icon: (
+      <Link
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/users-detail-withdrawal", 
+    title: "Users Wallet",
+    active: true,
+    onClick: () => console.log("Referral Link"),
+  },
 ];

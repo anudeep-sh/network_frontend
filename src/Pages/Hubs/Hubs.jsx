@@ -22,6 +22,7 @@ const Hubs = ({ setActiveSideBar }) => {
   const [member, setMember] = useState({ shortcode: "", level: 4 });
   const [hubsData, setHubsData] = useState([]);
   const [quotaData, setQuotaData] = useState(null);
+  const [userHubInfo, setUserHubInfo] = useState(null);
 
   // Mapping of level to corresponding images
   const levelImages = {
@@ -41,8 +42,7 @@ const Hubs = ({ setActiveSideBar }) => {
         title: level.name.replace(/_/g, " "), // Replacing underscores with spaces for better readability
         value: `Rs. ${level.price}`, // Formatting price with 'Rs.'
       }));
-      console.log(updatedHubsData);
-      setHubsData(updatedHubsData); // Update the state with the new data
+      setHubsData(updatedHubsData);
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,8 @@ const Hubs = ({ setActiveSideBar }) => {
   const getQuotas = async () => {
     try {
       const data = await hub.getQuotas();
-      setQuotaData(data.quota);
+      setQuotaData(data?.quota);
+      setUserHubInfo(data?.userInfo);
     } catch (error) {
       alert(error?.response?.data);
       console.log(error, "cool");
@@ -92,8 +93,7 @@ const Hubs = ({ setActiveSideBar }) => {
     const newLevel = parseInt(event.target.value, 10); // Parse the selected value as an integer
     updateMember(member.shortcode, newLevel);
   };
-  console.log(member, "member");
-  console.log(quotaData, "quotaData");
+
 
   return (
     <Box
@@ -155,7 +155,7 @@ const Hubs = ({ setActiveSideBar }) => {
               sm: "16px 20px 16px 20px",
             },
             borderRadius: "8px",
-            height: {xs:"max-content",md:'auto'},
+            height: { xs: "max-content", md: "auto" },
             display: "flex",
             alignItems: "baseline",
             justifyContent: "flex-start",
@@ -194,28 +194,6 @@ const Hubs = ({ setActiveSideBar }) => {
               required={true}
               onChange={(e) => handleShortcodeChange(e.target.value)}
             />
-            {/* <FormControl
-            sx={{
-              mt: 3,
-              width: "100%",
-              "& .MuiInputLabel-root": { color: "#F2F2F7" }, // Label color
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: "#6A6B6E", // Border color
-                },
-              },
-              "& .MuiSelect-root": { color: "#F2F2F7" }, // Text color
-            }}
-            size="small"
-          >
-            <InputLabel>Level</InputLabel>
-            <Select value={member.level} onChange={handleLevelChange}>
-              <MenuItem value={1}>Level 1</MenuItem>
-              <MenuItem value={2}>Level 2</MenuItem>
-              <MenuItem value={3}>Level 3</MenuItem>
-              <MenuItem value={4}>Level 4</MenuItem>
-            </Select>
-          </FormControl> */}
             <CustomSelect
               usingInDarkMode={true}
               label="Select Level"
@@ -231,9 +209,8 @@ const Hubs = ({ setActiveSideBar }) => {
             />
             <Button
               variant="contained"
-              sx={{ width: "100%" ,mt:2}}
+              sx={{ width: "100%", mt: 2 }}
               onClick={handleSubmit}
-              
             >
               Join
             </Button>
@@ -255,7 +232,7 @@ const Hubs = ({ setActiveSideBar }) => {
             flexDirection: "column",
             mr: { xs: 2, md: 3 },
             ml: { xs: 2, md: 3 },
-            mb:{xs:3,md:0},
+            mb: { xs: 0, md: 0 },
             mt: 3,
             width: { xs: "-webkit-fill-available", md: "40%" },
           }}
@@ -345,20 +322,6 @@ const Hubs = ({ setActiveSideBar }) => {
                       color: "#fff",
                     }}
                   >
-                    {/* <Typography
-                      component="span"
-                      sx={{
-                        letterSpacing: "1%",
-                        lineHeight: 1.3,
-                        mb: 1,
-                        fontWeight: "600",
-                        fontSize: {
-                          xs: "16px",
-                        },
-                      }}
-                    >
-                      {quotaData?.status}
-                    </Typography> */}
                     <Typography
                       component="span"
                       sx={{
@@ -381,36 +344,6 @@ const Hubs = ({ setActiveSideBar }) => {
               </Box>
             </Box>
           </Box>
-          {/* <Box
-            sx={{
-              backgroundColor: "#EF4444", // Red background
-              padding: "16px",
-              borderRadius: "8px",
-              width: "75%",
-              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow
-              color: "#FFFFFF",
-            }}
-          >
-            <Typography sx={{ fontSize: "18px", fontWeight: "500", mb: 2 }}>
-              Quotas Available
-            </Typography>
-            {console.log(quotaData, "quotaData")}
-            <Typography sx={{ fontSize: "16px" }}>
-              Quota: {quotaData?.quota}
-            </Typography>
-            <Typography sx={{ fontSize: "16px", mb: 1 }}>
-              Name: {quotaData?.name}
-            </Typography>
-            <Typography sx={{ fontSize: "16px", mb: 1 }}>
-              Shortcode: {quotaData?.shortcode}
-            </Typography>
-            <Typography sx={{ fontSize: "16px", mb: 1 }}>
-              Email: {quotaData?.emailId}
-            </Typography>
-            <Typography sx={{ fontSize: "16px", mb: 1 }}>
-              Status: {quotaData?.status}
-            </Typography>
-          </Box> */}
           <Box
             sx={{
               mt: 2,
@@ -424,7 +357,6 @@ const Hubs = ({ setActiveSideBar }) => {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "flex-start",
-              
             }}
           >
             <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
@@ -498,6 +430,83 @@ const Hubs = ({ setActiveSideBar }) => {
             </Typography>
             <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
               Quotas : {quotaData?.level4_quota}
+            </Typography>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            backgroundColor: "#2C2C2E",
+            padding: {
+              xs: "12px 16px 12px 16px",
+              sm: "16px 20px 16px 20px",
+            },
+            borderRadius: "8px",
+            height: "max-content",
+            display: "flex",
+            alignItems: "baseline",
+            justifyContent: "flex-start",
+            flexDirection: "column",
+            mr: { xs: 2, md: 3 },
+            ml: { xs: 2, md: 0 },
+            mb: { xs: 3, md: 0 },
+            mt: 3,
+            width: { xs: "-webkit-fill-available", md: "25%" },
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "18px",
+              color: "#F2F2F7",
+              fontWeight: "500",
+              textAlign: "left",
+              mb: 3,
+            }}
+          >
+            Your Info
+          </Typography>
+          <Box
+            sx={{
+              p: 1,
+              px: 2,
+              width: "-webkit-fill-available",
+              bgcolor: "#262626",
+              borderRadius: 2,
+              color: "#f9f9f9",
+              borderBottom: "1px solid #333333",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
+              Joined Hub
+            </Typography>
+            <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
+              {userHubInfo?.name}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              p: 1,
+              mt: 1,
+              px: 2,
+              width: "-webkit-fill-available",
+              bgcolor: "#262626",
+              borderRadius: 2,
+              color: "#f9f9f9",
+              borderBottom: "1px solid #333333",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
+              Current Level
+            </Typography>
+            <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
+              {userHubInfo?.level}
             </Typography>
           </Box>
         </Box>
