@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+body{
+  /* overflow-y: hidden; */
+  overflow-x: hidden;
+  background-color: #181818;
+}
