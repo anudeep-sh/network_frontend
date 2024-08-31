@@ -19,7 +19,7 @@ export default function ManualAvatar({ src, alt, height, width, name }) {
         // marginLeft: "auto",
         width: width || "40px",
         height: height || "40px",
-        backgroundColor: src ? "" : "#8686e0",
+        backgroundColor: src ? "" : "#FBBA30",
         color: "#fff",
         fontFamily: "Poppins",
         fontSize: "19px",

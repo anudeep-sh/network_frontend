@@ -1,55 +1,102 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import SideBarItem from "../../Components/SideBarItem";
 import { sideBarBottomItems, SideBarItems } from "../../utils/SideBarMenuItems";
 import { useLocation } from "react-router-dom";
 import { AdminSideBarMenuItems } from "../../utils/AdminSideBarMenuItems";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import Drawer from "@mui/material/Drawer";
 
-export default function SideBar({ activeSideBar, setActiveSideBar }) {
+const drawerWidth = 240;
+
+export default function SideBar({
+  activeSideBar,
+  setActiveSideBar,
+  handleDrawerToggle,
+  mobileOpen,
+}) {
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { pathname } = useLocation();
   const Admin = localStorage.getItem("Role") === "ADMIN";
-
-  return (
-    <Box
-      maxWidth={"240px"}
-      width={"240px"}
-      //height should be caluclate for full screen - height of navbar
-      height={"calc(100vh - 60px)"}
-      position={"absolute"}
-      display={"flex"}
-      flexDirection={"column"}
-      justifyContent={"space-between"}
-      // top={"0px"}
-      //   top={isMediumScreen ? "10px" : ''}
-      marginTop={"1px"}
-      left={"0px"}
-      zIndex={900}
-      sx={{
-        backgroundColor: "#242426",
-        overflowY: "hidden",
-        transition: activeSideBar && "width 0.3s ease-in-out",
-      }}
-    >
+  const drawer = (
+    <div style={{ height: "100dvh" }}>
+      <Toolbar sx={{ minHeight: { xs: '56px', sm: '60px' } }} />
+      <Divider />
       <Box
-        height={"70%"}
-        marginTop={"15px"}
         sx={{
-          overflowY: "auto",
-          "&::-webkit-scrollbar": {
-            width: "0px",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#2a2a3c",
-            borderRadius: "8px",
-          },
-          "&::-webkit-scrollbar-track": {
-            backgroundColor: "#1e1e2d",
-          },
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: "column",
+          height: "92%!important",
         }}
       >
-        {SideBarItems.map((item, index) => {
-          return (
+        <List
+          sx={{
+            overflowY: "auto",
+            "&::-webkit-scrollbar": {
+              width: "0px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#2a2a3c",
+              borderRadius: "8px",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#1e1e2d",
+            },
+          }}
+        >
+          {SideBarItems.map((item, index) => {
+            return (
+              <SideBarItem
+                key={index}
+                index={index}
+                Icon={item.Icon}
+                title={item.title}
+                menuList={item.menuList}
+                onClick={item.onClick}
+                activeSideBar={activeSideBar}
+                setActiveSideBar={setActiveSideBar}
+                url={item?.path}
+                active={pathname === item.path}
+              />
+            );
+          })}
+          {Admin && (
+            <>
+              {AdminSideBarMenuItems.map((item, index) => {
+                return (
+                  <SideBarItem
+                    key={index}
+                    index={index}
+                    Icon={item.Icon}
+                    title={item.title}
+                    menuList={item.menuList}
+                    onClick={item.onClick}
+                    activeSideBar={activeSideBar}
+                    setActiveSideBar={setActiveSideBar}
+                    url={item.path}
+                    active={pathname === item.path}
+                  />
+                );
+              })}
+            </>
+          )}
+        </List>
+        <List>
+          {sideBarBottomItems.map((item, index) => (
             <SideBarItem
               key={index}
               index={index}
@@ -60,46 +107,58 @@ export default function SideBar({ activeSideBar, setActiveSideBar }) {
               activeSideBar={activeSideBar}
               setActiveSideBar={setActiveSideBar}
               url={item.path}
-              active={pathname === item.path}
             />
-          );
-        })}
-        {Admin && (
-          <>
-            {AdminSideBarMenuItems.map((item, index) => {
-              return (
-                <SideBarItem
-                  key={index}
-                  index={index}
-                  Icon={item.Icon}
-                  title={item.title}
-                  menuList={item.menuList}
-                  onClick={item.onClick}
-                  activeSideBar={activeSideBar}
-                  setActiveSideBar={setActiveSideBar}
-                  url={item.path}
-                  active={pathname === item.path}
-                />
-              );
-            })}
-          </>
-        )}
+          ))}
+        </List>
       </Box>
-      <Box marginBottom={"10px"}>
-        {sideBarBottomItems.map((item, index) => (
-          <SideBarItem
-            key={index}
-            index={index}
-            Icon={item.Icon}
-            title={item.title}
-            menuList={item.menuList}
-            onClick={item.onClick}
-            activeSideBar={activeSideBar}
-            setActiveSideBar={setActiveSideBar}
-            url={item.path}
-          />
-        ))}
+    </div>
+  );
+  return (
+    <>
+      <Box
+        component="nav"
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+          backgroundColor: "#242426",
+        }}
+        aria-label="mailbox folders"
+      >
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true,
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: "#242426",
+              overflowY: "hidden",
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+              backgroundColor: "#242426",
+              overflowY: "hidden",
+            },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
       </Box>
-    </Box>
+    </>
   );
 }

@@ -4,7 +4,13 @@ import "./App.css";
 import Navbar from "./Pages/Navbar";
 import SideBar from "./Pages/Sidebar";
 import { useState } from "react";
-import { ThemeProvider, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  ThemeProvider,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import DashBoard from "./Pages/Dashboard";
@@ -35,28 +41,43 @@ function App() {
 
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const Admin = localStorage.getItem("Role" )==="ADMIN";
+  const Admin = localStorage.getItem("Role") === "ADMIN";
   console.log(Admin, "admin");
+
   const Layout = () => {
+    const theme = useTheme();
+    const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+    const [isClosing, setIsClosing] = React.useState(false);
+
+    const [mobileOpen, setMobileOpen] = React.useState(false);
+
+    const handleDrawerToggle = () => {
+      setMobileOpen(!mobileOpen);
+      console.log(mobileOpen, "mobileOpen called function");
+    };
+    const handleDrawerClose = () => {
+      setIsClosing(true);
+      setMobileOpen(false);
+    };
+
+    const handleDrawerTransitionEnd = () => {
+      setIsClosing(false);
+    };
+
     return (
       <>
         <Navbar
-          activeSideBar={activeSideBar}
-          setActiveSideBar={setActiveSideBar}
+          handleDrawerToggle={handleDrawerToggle}
+          mobileOpen={mobileOpen}
         />
-        {!isMediumScreen && (
-          <SideBar
-            activeSideBar={activeSideBar}
-            setActiveSideBar={setActiveSideBar}
-          />
-        )}
-        {activeSideBar && (
-          <SideBar
-            activeSideBar={activeSideBar}
-            setActiveSideBar={setActiveSideBar}
-          />
-        )}
-        <Outlet />
+        <SideBar
+          mobileOpen={mobileOpen}
+          handleDrawerToggle={handleDrawerToggle}
+        />
+        <Box>
+          <Toolbar sx={{ minHeight: { xs: "56px", sm: "60px" } }} />
+          <Outlet />
+        </Box>
       </>
     );
   };
@@ -100,10 +121,19 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 {Admin && (
                   <>
-                    <Route path="/user-quotas" element={<UserQuotas setActiveSideBar={setActiveSideBar} />} />
-                    <Route path="/user-withdrawal" element={<UserWithdrawal setActiveSideBar={setActiveSideBar}/>} />
-                    <Route path="/approved-withdrawal" element={<ApprovedWithdrawals setActiveSideBar={setActiveSideBar}/>} />
-                    <Route path="/users-detail-withdrawal" element={<UsersDetailsWallet setActiveSideBar={setActiveSideBar}/>} />
+                    <Route path="/user-quotas" element={<UserQuotas />} />
+                    <Route
+                      path="/user-withdrawal"
+                      element={<UserWithdrawal />}
+                    />
+                    <Route
+                      path="/approved-withdrawal"
+                      element={<ApprovedWithdrawals />}
+                    />
+                    <Route
+                      path="/users-detail-withdrawal"
+                      element={<UsersDetailsWallet />}
+                    />
                   </>
                 )}
                 <Route path="/support" element={<Support />} />
