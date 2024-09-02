@@ -35,12 +35,13 @@ const Hubs = ({ setActiveSideBar }) => {
   const handleGetHubs = async () => {
     try {
       const response = await hub.getHubs();
-
+      const values = [15000, 10000, 7000, 4500];
       // Map backend data to include the corresponding image
-      const updatedHubsData = response.levels.map((level) => ({
+      const updatedHubsData = response.levels.map((level,index) => ({
         icon: levelImages[level.level], // Get the image based on the level
         title: level.name.replace(/_/g, " "), // Replacing underscores with spaces for better readability
-        value: `Rs. ${level.price}`, // Formatting price with 'Rs.'
+        // value: `Rs. ${level.price}`, // Formatting price with 'Rs.'
+        value: `Rs. ${values[index]}`, // Formatting price with 'Rs.'
       }));
       setHubsData(updatedHubsData);
     } catch (error) {
@@ -93,7 +94,6 @@ const Hubs = ({ setActiveSideBar }) => {
     const newLevel = parseInt(event.target.value, 10); // Parse the selected value as an integer
     updateMember(member.shortcode, newLevel);
   };
-
 
   return (
     <Box

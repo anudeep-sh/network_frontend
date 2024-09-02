@@ -71,9 +71,9 @@ export default function UserWithdrawal({ setActiveSideBar }) {
       marginLeft={{
         md: `${SideBarWidth}px`,
       }}
-      onClick={() => {
-        setActiveSideBar(false);
-      }}
+      // onClick={() => {
+      //   setActiveSideBar(false);
+      // }}
       sx={{
         width: {
           xs: "100%",

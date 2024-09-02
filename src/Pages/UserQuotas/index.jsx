@@ -95,9 +95,9 @@ export default function UserQuotas({ setActiveSideBar }) {
       marginLeft={{
         md: `${SideBarWidth}px`,
       }}
-      onClick={() => {
-        setActiveSideBar(false);
-      }}
+      // onClick={() => {
+      //   setActiveSideBar(false);
+      // }}
       sx={{
         width: {
           xs: "100%",
@@ -229,6 +229,7 @@ export default function UserQuotas({ setActiveSideBar }) {
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ color: "#F2F2F7" }}>Name</TableCell>
+                  <TableCell sx={{ color: "#F2F2F7" }}>shortcode</TableCell>
                   <TableCell sx={{ color: "#F2F2F7" }}>Email</TableCell>
                   <TableCell sx={{ color: "#F2F2F7" }}>Quota1</TableCell>
                   <TableCell sx={{ color: "#F2F2F7" }}>Quota2</TableCell>
@@ -242,6 +243,9 @@ export default function UserQuotas({ setActiveSideBar }) {
                   <TableRow key={quota.id}>
                     <TableCell sx={{ color: "#F2F2F7" }}>
                       {quota.name}
+                    </TableCell>
+                    <TableCell sx={{ color: "#F2F2F7" }}>
+                      {quota.shortcode}
                     </TableCell>
                     <TableCell sx={{ color: "#F2F2F7" }}>
                       {quota.emailId}

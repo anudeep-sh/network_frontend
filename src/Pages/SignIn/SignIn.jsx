@@ -134,7 +134,7 @@ const SignIn = () => {
         <Box display={"flex"} gap={"8px"} alignItems={"center"}>
           <img src={Logo} alt="Network Logo" height={40} width={40} />
           <Typography fontSize={"30px"} color={"#fff"}>
-            Network
+            Fi Wallet
           </Typography>
         </Box>
         <Typography fontSize={"16px"} color={"#fff"}>

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Typography } from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
 import { hub } from "../../api/requests/hubs/hubs";
 
 const Profile = ({ setActiveSideBar }) => {
   const [userId, setUserId] = useState(null);
+  const [passwordValue, setPasswordValue] = useState("");
 
   const getUserDetail = async () => {
     try {
       const data = await hub.getUsersDetails();
       setUserId(data?.data?.id);
+      console.log(data.data,"data.data")
       setFormData({
         pan_number: data?.data?.pan_number || "",
         aadhar_number: data?.data?.aadhar_number || "",
@@ -60,6 +62,31 @@ const Profile = ({ setActiveSideBar }) => {
     }
   };
 
+  const handleInputChange = (e) => {
+    setPasswordValue(e.target.value);
+  };
+
+  const handleUpdatePassword = async () => {
+    if (userId) {
+      try {
+        const response = await hub.patchUpdateUserPassword(userId, {
+          newPassword: passwordValue,
+        });
+        console.log(response,"response")
+        if (response) {
+          alert(" updated password successfully!");
+          setPasswordValue("")
+        }
+      } catch (error) {
+        console.log(error, "error");
+        alert("Failed to update quota");
+        setPasswordValue("")
+      }
+    } else {
+      alert("Please select a user and enter a password before saving.");
+    }
+  };
+
   return (
     <Box
       onClick={() => {
@@ -82,7 +109,13 @@ const Profile = ({ setActiveSideBar }) => {
         },
       }}
     >
-      <Box sx={{ p: 3 }}>
+      <Box
+        sx={{
+          p: 3,
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+        }}
+      >
         <Box
           bgcolor={"#242424"}
           mb={3}
@@ -97,6 +130,17 @@ const Profile = ({ setActiveSideBar }) => {
             width: { xs: "-webkit-fill-available", md: "300px" }, // Set the Box width to 300px
           }}
         >
+          <Typography
+            sx={{
+              fontSize: "18px",
+              color: "#F2F2F7",
+              fontWeight: "500",
+              textAlign: "left",
+              mb: 3,
+            }}
+          >
+            Your Info
+          </Typography>
           <TextField
             name="pan_number"
             label="PAN Number"
@@ -252,6 +296,76 @@ const Profile = ({ setActiveSideBar }) => {
             }}
           >
             Submit
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            height: "max-content",
+            backgroundColor: "#242424",
+            borderRadius: 1,
+            padding: {
+              xs: "24px 16px 20px 16px",
+              sm: "24px 20px 20px 20px",
+            },
+            mr: { xs: 0, md: 3 },
+            ml: { xs: 0, md: 3 },
+            width: { xs: "-webkit-fill-available", md: "300px" }, // Set the Box width to 300px
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "18px",
+              color: "#F2F2F7",
+              fontWeight: "500",
+              textAlign: "left",
+              mb: 3,
+            }}
+          >
+            Change Your Password
+          </Typography>
+          <TextField
+            name="Change Password"
+            label="Chnage Password"
+            variant="outlined"
+            size="small"
+            type="text"
+            value={passwordValue}
+            onChange={handleInputChange}
+            sx={{
+              marginBottom: 3,
+
+              "& .MuiOutlinedInput-root": {
+                color: "#F2F2F7",
+                "& fieldset": {
+                  borderColor: "#6f6f6f",
+                },
+                "&:hover fieldset": {
+                  borderColor: "#6f6f6f",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#6f6f6f",
+                },
+              },
+              "& .MuiInputLabel-root": {
+                color: "#b4b4b4",
+              },
+              borderRadius: "4px",
+            }}
+          />
+          <Button
+            variant="contained"
+            onClick={handleUpdatePassword}
+            sx={{
+              backgroundColor: "#F2F2F7",
+              color: "#242424",
+              marginTop: 1,
+            }}
+            disabled={!passwordValue}
+
+          >
+            Update Password
           </Button>
         </Box>
       </Box>

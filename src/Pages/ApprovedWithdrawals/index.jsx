@@ -40,9 +40,9 @@ export default function ApprovedWithdrawals({ setActiveSideBar }) {
       marginLeft={{
         md: `${SideBarWidth}px`,
       }}
-      onClick={() => {
-        setActiveSideBar(false);
-      }}
+      // onClick={() => {
+      //   setActiveSideBar(false);
+      // }}
       sx={{
         width: {
           xs: "100%",
