@@ -313,8 +313,19 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                                       }}
                                     >
                                       {item.walletHistory.reduce(
-                                        (total, historyItem) =>
-                                          total + parseInt(historyItem.amount),
+                                        (total, historyItem) => {
+                                          if (historyItem.type === "CREDIT") {
+                                            return (
+                                              total +
+                                              parseInt(historyItem.amount)
+                                            );
+                                          } else {
+                                            return (
+                                              total -
+                                              parseInt(historyItem.amount)
+                                            );
+                                          }
+                                        },
                                         0
                                       )}
                                     </TableCell>
