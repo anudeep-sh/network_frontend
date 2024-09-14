@@ -294,7 +294,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                                   </TableRow>
                                 ))}
                                 {/* Calculate total amount */}
-                                {item.walletHistory.length > 0 && (
+                                {item?.walletHistory?.length > 0 && (
                                   <TableRow>
                                     <TableCell
                                       colSpan={3}
