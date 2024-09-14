@@ -133,9 +133,9 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
               value={passwordValue}
               onChange={handleInputChange}
               sx={{
-                '& .MuiInputLabel-root': {
-                    color: '#6f6f6f', // For the label color
-                  },
+                "& .MuiInputLabel-root": {
+                  color: "#6f6f6f", // For the label color
+                },
                 "& .MuiOutlinedInput-root": {
                   color: "#F2F2F7",
                   "& fieldset": {
@@ -150,12 +150,12 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                   },
                 },
                 "&.Mui-disabled": {
-                //   color: "#F2F2F7    ",
+                  //   color: "#F2F2F7    ",
                   "& fieldset": {
                     borderColor: "#393939",
                     // color: "#F2F2F7",
                   },
-                 
+
                   backgroundColor: "#e0e0e0",
                 },
                 width: "300px",
@@ -293,6 +293,33 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                                     </TableCell>
                                   </TableRow>
                                 ))}
+                                {/* Calculate total amount */}
+                                {item.walletHistory.length > 0 && (
+                                  <TableRow>
+                                    <TableCell
+                                      colSpan={3}
+                                      sx={{
+                                        textAlign: "right",
+                                        color: "#F2F2F7",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      Total Amount
+                                    </TableCell>
+                                    <TableCell
+                                      sx={{
+                                        color: "#F2F2F7",
+                                        fontWeight: "bold",
+                                      }}
+                                    >
+                                      {item.walletHistory.reduce(
+                                        (total, historyItem) =>
+                                          total + parseInt(historyItem.amount),
+                                        0
+                                      )}
+                                    </TableCell>
+                                  </TableRow>
+                                )}
                               </TableBody>
                             </Table>
                           </Box>
