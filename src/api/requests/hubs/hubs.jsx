@@ -51,4 +51,8 @@ export const hub = {
     const response = await performRequestBackend(`users/${id}/password`, "PATCH",body);
     return response;
   },
+  patchUpdateWalletDetails: async (body) => {
+    const response = await performRequestBackend(`/v1/update-wallet-details`, "PATCH",body);
+    return response;
+  },
 };

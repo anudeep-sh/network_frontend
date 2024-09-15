@@ -23,6 +23,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [passwordValue, setPasswordValue] = useState("");
+  const [amount, setAmount] = useState("");
   const [data, setData] = useState([]);
   const [expandedRow, setExpandedRow] = useState(null);
 
@@ -42,6 +43,9 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
   const handleInputChange = (e) => {
     setPasswordValue(e.target.value);
   };
+  const handleInputChangeAmount = (e) => {
+    setAmount(e.target.value);
+  };
 
   const handleSave = async () => {
     if (selectedItem) {
@@ -50,10 +54,35 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
           newPassword: passwordValue,
         });
         if (response) {
-          alert(" updated password successfully!");
+          setSelectedItem(null);
+          setPasswordValue("");
+          alert("Updated Password Successfully!");
         }
       } catch (error) {
-        alert("Failed to update quota");
+        alert("Failed To Update Password");
+      }
+    } else {
+      alert("Please select a user and enter a password before saving.");
+    }
+  };
+  const handleAddAmount = async () => {
+    if (selectedItem) {
+      const numericAmount = Number(amount);
+      console.log(amount, selectedId, numericAmount, "amount,selectedId");
+      try {
+        const response = await hub.patchUpdateWalletDetails({
+          amount: numericAmount,
+          user_id: selectedId,
+        });
+        if (response) {
+          setSelectedItem(null);
+          setAmount("");
+          getUsersWallet();
+          alert(" Added Amount Successfully!");
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Failed To Add Amount");
       }
     } else {
       alert("Please select a user and enter a password before saving.");
@@ -64,7 +93,6 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
     setSelectedItem(item);
     setSelectedId(item?.user?.id);
   };
-  console.log(selectedItem, "selectedItem");
 
   const handleRowClick = (itemId) => {
     setExpandedRow(expandedRow === itemId ? null : itemId);
@@ -75,9 +103,6 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
       marginLeft={{
         md: `${SideBarWidth}px`,
       }}
-      // onClick={() => {
-      //   setActiveSideBar(false);
-      // }}
       sx={{
         width: {
           xs: "100%",
@@ -102,12 +127,13 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
           mb={3}
           sx={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: { xs: "column", md: "row" },
             borderRadius: 1,
             padding: {
               xs: "12px 16px",
               sm: "16px 20px",
             },
+            gap: 3,
           }}
         >
           {selectedItem?.name && (
@@ -129,12 +155,12 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
               variant="outlined"
               size="small"
               type="number"
-              label="Select user change Password"
+              label="Select User Change Password"
               value={passwordValue}
               onChange={handleInputChange}
               sx={{
                 "& .MuiInputLabel-root": {
-                  color: "#6f6f6f", // For the label color
+                  color: "#6f6f6f",
                 },
                 "& .MuiOutlinedInput-root": {
                   color: "#F2F2F7",
@@ -150,10 +176,8 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                   },
                 },
                 "&.Mui-disabled": {
-                  //   color: "#F2F2F7    ",
                   "& fieldset": {
                     borderColor: "#393939",
-                    // color: "#F2F2F7",
                   },
 
                   backgroundColor: "#e0e0e0",
@@ -179,6 +203,62 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
               disabled={!selectedItem}
             >
               Save
+            </Button>
+          </Box>
+          <Box sx={{ display: "flex", gap: 2, mb: 0 }}>
+            <TextField
+              variant="outlined"
+              size="small"
+              type="number"
+              label="Select User & Add Amount"
+              value={amount}
+              onChange={handleInputChangeAmount}
+              sx={{
+                "& .MuiInputLabel-root": {
+                  color: "#6f6f6f",
+                },
+                "& .MuiOutlinedInput-root": {
+                  color: "#F2F2F7",
+                  "& fieldset": {
+                    borderColor: "#6f6f6f",
+                    color: "#F2F2F7",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#6f6f6f",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#6f6f6f",
+                  },
+                },
+                "&.Mui-disabled": {
+                  "& fieldset": {
+                    borderColor: "#393939",
+                  },
+
+                  backgroundColor: "#e0e0e0",
+                },
+                width: "300px",
+                color: "#F2F2F7",
+                borderRadius: "4px",
+              }}
+              disabled={!selectedItem}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                minWidth:'max-content',
+                height: "max-content",
+                "&.Mui-disabled": {
+                  bgcolor: "#d3d3d3",
+                  color: "#9e9e9e",
+                  boxShadow: "none",
+                },
+              }}
+              onClick={handleAddAmount}
+              disabled={!selectedItem}
+            >
+              Add Amount
             </Button>
           </Box>
         </Box>
