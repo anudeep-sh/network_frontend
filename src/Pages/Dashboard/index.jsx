@@ -64,14 +64,14 @@ export default function DashBoard({ setActiveSideBar }) {
             icon: Wallet,
             title: "Wallet",
             value: `Rs. ${
-            totalCredit
+            totalCredit-totalWithdrawal
             }`,
           },
           {
             icon: Income,
             title: "Total Income",
             value: `Rs. ${
-              totalWithdrawal+totalCredit
+              totalCredit
             }`,
           },
           {
