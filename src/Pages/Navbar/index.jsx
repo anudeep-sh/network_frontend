@@ -28,7 +28,6 @@ export default function Navbar({ handleDrawerToggle, mobileOpen }) {
 
   useEffect(() => {
     const response = GetValidatedTokenData();
-    console.log(response.userPayload);
     setData({
       name: response.userPayload?.name.toUpperCase(),
       src: "",

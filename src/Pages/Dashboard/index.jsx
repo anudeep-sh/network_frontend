@@ -25,16 +25,16 @@ export default function DashBoard({ setActiveSideBar }) {
       title: "Wallet",
       value: "Rs. 0",
     },
-    {
-      icon: Income,
-      title: "Total Income",
-      value: "Rs. 0",
-    },
-    {
-      icon: Withdrawal,
-      title: "Pending Withdrawal",
-      value: "Rs. 0",
-    },
+    // {
+    //   icon: Income,
+    //   title: "Total Income",
+    //   value: "Rs. 0",
+    // },
+    // {
+    //   icon: Withdrawal,
+    //   title: "Pending Withdrawal",
+    //   value: "Rs. 0",
+    // },
   ]);
   const [loading, setLoading] = useState(true);
 
@@ -63,24 +63,18 @@ export default function DashBoard({ setActiveSideBar }) {
           {
             icon: Wallet,
             title: "Wallet",
-            value: `Rs. ${
-            totalCredit-totalWithdrawal
-            }`,
+            value: `Rs. ${totalCredit - totalWithdrawal}`,
           },
-          {
-            icon: Income,
-            title: "Total Income",
-            value: `Rs. ${
-              totalCredit
-            }`,
-          },
-          {
-            icon: Withdrawal,
-            title: "Total Withdrawal",
-            value: `Rs. ${
-             totalWithdrawal
-            }`,
-          },
+          // {
+          //   icon: Income,
+          //   title: "Total Income",
+          //   value: `Rs. ${totalCredit}`,
+          // },
+          // {
+          //   icon: Withdrawal,
+          //   title: "Total Withdrawal",
+          //   value: `Rs. ${totalWithdrawal}`,
+          // },
         ]);
         console.log("response", response);
         setLoading(false);

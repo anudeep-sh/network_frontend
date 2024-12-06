@@ -89,6 +89,20 @@ export const SideBarItems = [
     active: true,
     onClick: () => console.log("Income history"),
   },
+  {
+    Icon: (
+      <AttachMoney
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/insurance-policy",
+    title: "Insurance Policy",
+    active: true,
+    onClick: () => console.log("Transfer money"),
+  },
 ];
 
 export const sideBarBottomItems = [

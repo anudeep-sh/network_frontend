@@ -373,44 +373,6 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                                     </TableCell>
                                   </TableRow>
                                 ))}
-                                {/* Calculate total amount */}
-                                {item?.walletHistory?.length > 0 && (
-                                  <TableRow>
-                                    <TableCell
-                                      colSpan={3}
-                                      sx={{
-                                        textAlign: "right",
-                                        color: "#F2F2F7",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      Total Amount
-                                    </TableCell>
-                                    <TableCell
-                                      sx={{
-                                        color: "#F2F2F7",
-                                        fontWeight: "bold",
-                                      }}
-                                    >
-                                      {item.walletHistory.reduce(
-                                        (total, historyItem) => {
-                                          if (historyItem.type === "CREDIT") {
-                                            return (
-                                              total +
-                                              parseInt(historyItem.amount)
-                                            );
-                                          } else {
-                                            return (
-                                              total -
-                                              parseInt(historyItem.amount)
-                                            );
-                                          }
-                                        },
-                                        0
-                                      )}
-                                    </TableCell>
-                                  </TableRow>
-                                )}
                               </TableBody>
                             </Table>
                           </Box>

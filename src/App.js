@@ -35,6 +35,7 @@ import UserWithdrawal from "./Pages/UserWithdrawal";
 import PendingUserWithdrawal from "./Pages/ApprovedWithdrawals";
 import ApprovedWithdrawals from "./Pages/ApprovedWithdrawals";
 import UsersDetailsWallet from "./Pages/UsersDetailsWallet/Index";
+import InsurancePolicy from "./Pages/InsurancePolicy";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
@@ -118,6 +119,7 @@ function App() {
                   element={<WithDrawalHistory />}
                 />
                 <Route path="/withdrawal" element={<WithDrawal />} />
+                <Route path="/insurance-policy" element={<InsurancePolicy />} />
                 <Route path="/profile" element={<Profile />} />
                 {Admin && (
                   <>

@@ -6,7 +6,7 @@ export default function DashBoardWidget({ icon, title, value,hubs }) {
       sx={{
         width: {
           xs: "calc(100% / 2 - 8px)", // For xs and sm breakpoints
-          md: "calc(100% / 4 - 16px)", // For md and lg breakpoints
+          md: "calc(100% / 2 - 16px)", // For md and lg breakpoints
         },
         mb: 2,
       }}
