@@ -99,17 +99,6 @@ export default function DashBoard({ setActiveSideBar }) {
           xs: "100%",
           md: `calc(100% - ${SideBarWidth}px)`,
         },
-        overflowY: "auto",
-        "&::-webkit-scrollbar": {
-          width: "0px",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "#2a2a3c",
-          borderRadius: "8px",
-        },
-        "&::-webkit-scrollbar-track": {
-          backgroundColor: "#1e1e2d",
-        },
       }}
       height={"100vh"}
     >
@@ -137,7 +126,7 @@ export default function DashBoard({ setActiveSideBar }) {
       {/* <MembersTree /> */}
       <Box
         sx={{
-          backgroundColor: "#2C2C2E",
+          backgroundColor: "#ffffff",
           mt: 3,
           p: 3,
           borderRadius: "8px",
@@ -148,7 +137,7 @@ export default function DashBoard({ setActiveSideBar }) {
         <Typography
           sx={{
             fontSize: "18px",
-            color: "#F2F2F7",
+            color: "#3C3C3C",
             fontWeight: "500",
             textAlign: "left",
             mb: 3,

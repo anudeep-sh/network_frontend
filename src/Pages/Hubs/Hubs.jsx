@@ -149,7 +149,7 @@ const Hubs = ({ setActiveSideBar }) => {
       <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" } }}>
         <Box
           sx={{
-            backgroundColor: "#2C2C2E",
+            backgroundColor: "#ffffff",
             padding: {
               xs: "12px 16px 12px 16px",
               sm: "16px 20px 16px 20px",
@@ -169,7 +169,7 @@ const Hubs = ({ setActiveSideBar }) => {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 3,
@@ -186,7 +186,7 @@ const Hubs = ({ setActiveSideBar }) => {
             }}
           >
             <InputBox
-              usingInDarkMode={true}
+              usingInDarkMode={false}
               label="Shortcode"
               placeholder={"Enter your shortcode"}
               type="number"
@@ -195,7 +195,7 @@ const Hubs = ({ setActiveSideBar }) => {
               onChange={(e) => handleShortcodeChange(e.target.value)}
             />
             <CustomSelect
-              usingInDarkMode={true}
+              usingInDarkMode={false}
               label="Select Level"
               value={member.level}
               onChange={handleLevelChange}
@@ -219,7 +219,7 @@ const Hubs = ({ setActiveSideBar }) => {
 
         <Box
           sx={{
-            backgroundColor: "#2C2C2E",
+            backgroundColor: "#ffffff",
             padding: {
               xs: "12px 16px 12px 16px",
               sm: "16px 20px 16px 20px",
@@ -240,7 +240,7 @@ const Hubs = ({ setActiveSideBar }) => {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 3,
@@ -252,7 +252,7 @@ const Hubs = ({ setActiveSideBar }) => {
             sx={{
               p: 2,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
             }}
           >
@@ -281,7 +281,7 @@ const Hubs = ({ setActiveSideBar }) => {
                       display: "flex",
                       alignItems: "flex-start",
                       flexDirection: "column",
-                      color: "#fff",
+                      color: "#3C3C3C",
                     }}
                   >
                     <Typography
@@ -319,7 +319,7 @@ const Hubs = ({ setActiveSideBar }) => {
                       display: "flex",
                       alignItems: "flex-start",
                       flexDirection: "column",
-                      color: "#fff",
+                      color: "#3C3C3C",
                     }}
                   >
                     <Typography
@@ -338,7 +338,7 @@ const Hubs = ({ setActiveSideBar }) => {
                     </Typography>
                   </Box>
                 </Box>
-                <Typography sx={{ fontSize: "16px", color: "#f2f2f5" }}>
+                <Typography sx={{ fontSize: "16px", color: "#797979" }}>
                   {quotaData?.emailId}
                 </Typography>
               </Box>
@@ -349,10 +349,10 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 2,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#f9f9f9",
-              borderBottom: "1px solid #333333",
+              color: "#3C3C3C",
+              borderBottom: "1px solid #edeef3",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -371,10 +371,10 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#f9f9f9",
-              borderBottom: "1px solid #333333",
+              color: "#3C3C3C",
+              borderBottom: "1px solid #edeef3",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -393,10 +393,10 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#f9f9f9",
-              borderBottom: "1px solid #333333",
+              color: "#3C3C3C",
+              borderBottom: "1px solid #edeef3",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -415,10 +415,10 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#f9f9f9",
-              borderBottom: "1px solid #333333",
+              color: "#3C3C3C",
+              borderBottom: "1px solid #edeef3",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -435,7 +435,7 @@ const Hubs = ({ setActiveSideBar }) => {
         </Box>
         <Box
           sx={{
-            backgroundColor: "#2C2C2E",
+            backgroundColor: "#ffffff",
             padding: {
               xs: "12px 16px 12px 16px",
               sm: "16px 20px 16px 20px",
@@ -456,7 +456,7 @@ const Hubs = ({ setActiveSideBar }) => {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 3,
@@ -469,10 +469,10 @@ const Hubs = ({ setActiveSideBar }) => {
               p: 1,
               px: 2,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#f9f9f9",
-              borderBottom: "1px solid #333333",
+              color: "#3C3C3C",
+              borderBottom: "1px solid #edeef3",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -492,10 +492,10 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               px: 2,
               width: "-webkit-fill-available",
-              bgcolor: "#262626",
+              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#f9f9f9",
-              borderBottom: "1px solid #333333",
+              color: "#3C3C3C",
+              borderBottom: "1px solid #edeef3",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",

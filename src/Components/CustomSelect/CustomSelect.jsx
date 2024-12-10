@@ -19,7 +19,7 @@ const CustomSelect = ({
         marginRight={"auto"}
         mb={"5px"}
         fontSize={"12px"}
-        color="#F2F2F7" // Adjust the color as needed
+        color="#3C3C3C" // Adjust the color as needed
       >
         {label}
       </Typography>}

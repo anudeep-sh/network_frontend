@@ -48,7 +48,7 @@ export default function Navbar({ handleDrawerToggle, mobileOpen }) {
   return (
     <>
       <AppBar
-        position="fixed"
+        position="relative"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
           backgroundColor: "#fff",
@@ -58,6 +58,7 @@ export default function Navbar({ handleDrawerToggle, mobileOpen }) {
           display: "flex",
           alignItems: "center",
           width: "100%",
+          boxShadow: "0px 2px 12px rgba(0, 0, 0, 0.07)!important",
         }}
       >
         <Toolbar
@@ -66,6 +67,7 @@ export default function Navbar({ handleDrawerToggle, mobileOpen }) {
             alignItems: "center",
             justifyContent: "space-between",
             width: "100%",
+            px:'0px!important'
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>

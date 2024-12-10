@@ -12,7 +12,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
   <g transform="translate(-146, -33)" onClick={toggleNode}>
     {/* Centering the entire node */}
     {/* Outer frame for the node */}
-    <rect width="292" height="66" rx="8" ry="8" fill="#242426" stroke="none" />
+    <rect width="292" height="66" rx="8" ry="8" fill="#f1f1f1" stroke="none" />
     {/* Inner circle for the user icon */}
 
     {/* The imported SVG icon */}
@@ -22,7 +22,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
     {/* Text block for the name and ID */}
     <g transform="translate(74, 27)" stroke="none">
       <text
-        fill="#DDDDE2"
+        fill="#3C3C3C"
         fontSize="14"
         fontFamily="Poppins"
         fontWeight="500"
@@ -32,7 +32,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
         {nodeDatum.name}
       </text>
       <text
-        fill="#B7B7BB"
+        fill="#727273"
         fontSize="14"
         fontFamily="Poppins"
         fontWeight="400"

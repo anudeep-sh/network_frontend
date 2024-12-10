@@ -37,7 +37,7 @@ export default function Transactions() {
     >
       <Box
         sx={{
-          backgroundColor: "#2C2C2E",
+          backgroundColor: "#ffffff",
           mt: 3,
           p: 3,
           borderRadius: "8px",
@@ -47,29 +47,29 @@ export default function Transactions() {
       >
         <Typography
           variant="h6"
-          sx={{ color: "#F2F2F7", marginBottom: "16px" }}
+          sx={{ color: "#3C3C3C", marginBottom: "16px" }}
         >
           Wallet History
         </Typography>
 
-        <TableContainer component={Paper} sx={{ backgroundColor: "#2C2C2E" }}>
+        <TableContainer component={Paper} sx={{ backgroundColor: "#ffffff" }}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ color: "#F2F2F7" }}>
+                <TableCell sx={{ color: "#3C3C3C" }}>
                   Transaction Type
                 </TableCell>
-                <TableCell sx={{ color: "#F2F2F7" }}>Amount (Rs.)</TableCell>
-                <TableCell sx={{ color: "#F2F2F7" }}>Date</TableCell>
+                <TableCell sx={{ color: "#3C3C3C" }}>Amount (Rs.)</TableCell>
+                <TableCell sx={{ color: "#3C3C3C" }}>Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {walletHistory?.map((transaction) => (
                 <TableRow key={transaction.id}>
-                  <TableCell sx={{ color: "#F2F2F7" }}>
+                  <TableCell sx={{ color: "#3C3C3C" }}>
                     {transaction.type}
                   </TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>
+                  <TableCell sx={{ color: "#3C3C3C" }}>
                     {transaction.amount}
                   </TableCell>
                   <TableCell sx={{ color: "#A1A1AA" }}>

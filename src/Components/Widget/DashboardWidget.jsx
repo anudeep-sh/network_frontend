@@ -13,7 +13,7 @@ export default function DashBoardWidget({ icon, title, value,hubs }) {
     >
       <Box
         sx={{
-          backgroundColor: "#2C2C2E",
+          backgroundColor: "#ffffff",
           padding: {
             xs: "12px 16px 12px 16px",
             sm: "16px 20px 16px 20px",
@@ -27,7 +27,7 @@ export default function DashBoardWidget({ icon, title, value,hubs }) {
       >
         <Typography
           style={{
-            color: "#F2F2F7",
+            color: "#3C3C3C",
             textAlign: "start",
           }}
         >

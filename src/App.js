@@ -75,10 +75,7 @@ function App() {
           mobileOpen={mobileOpen}
           handleDrawerToggle={handleDrawerToggle}
         />
-        <Box>
-          <Toolbar sx={{ minHeight: { xs: "56px", sm: "60px" } }} />
           <Outlet />
-        </Box>
       </>
     );
   };
@@ -87,7 +84,7 @@ function App() {
     <div
       className="App"
       style={{
-        backgroundColor: "#181818",
+        backgroundColor: "#F3F4F8",
         height: "100%",
         margin: 0,
         padding: 0,

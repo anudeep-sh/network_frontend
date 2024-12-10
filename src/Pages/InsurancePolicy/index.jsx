@@ -10,12 +10,15 @@ import HospitalIcon from "../../Assets/Images/insurance/ph_hospital.png";
 import ClaimIcon from "../../Assets/Images/insurance/claims.png";
 import OfficesIcon from "../../Assets/Images/insurance/building-office-thin.png";
 import CheckIcon from "../../Assets/Images/insurance/check.png";
+import InsuranceBenefitCard from "../../Components/InsuranceBenefitCard";
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
-    color: "#F2F2F7",
+    fontFamily: "'Poppins', sans-serif",
+    color: "#3C3C3C",
   },
   "& .MuiInputLabel-root": {
+    fontFamily: "'Poppins', sans-serif",
     color: "#afafb3",
     "&.Mui-disabled": {
       color: "#A6A6A6",
@@ -33,10 +36,10 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
       borderColor: "#A6A6A6",
     },
     "&:hover fieldset": {
-      borderColor: "#F2F2F7",
+      borderColor: "#3C3C3C",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#F2F2F7",
+      borderColor: "#3C3C3C",
     },
     "& .MuiInputBase-input.Mui-disabled": {
       WebkitTextFillColor: "#A6A6A6",
@@ -48,6 +51,66 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const InsurancePolicy = () => {
+  const [cardData, setCardData] = useState([
+    {
+      icon: CheckIcon,
+      title: "Anywhere Cashless Claims",
+      description:
+        "Now avail Anywhere Cashless Claims all across India. With 14000+ Network Hospitals, we are also one of India's widest medical coverage providers.",
+    },
+    {
+      icon: CheckIcon,
+      title: "24*7 Customer Service",
+      description:
+        "Call us at 1800-425-2255 for claim intimation, telehealth services and to clear your queries.",
+    },
+    {
+      icon: CheckIcon,
+      title: "In-house Claim Settlement",
+      description:
+        "We're the first Standalone Health Insurance company to settle the claims without any TPA's instead you are secured by our qualified in-house team.",
+    },
+    {
+      icon: CheckIcon,
+      title: "Claim Settlement",
+      description:
+        "90% of our claims are settled under cashless within 2hrs and 92% of claims are settled under reimbursement within 7days.",
+    },
+    {
+      icon: CheckIcon,
+      title: "Hospitals",
+      description:
+        "Hospitals We got you covered by offering best health insurance plans under our valuable service providers, agreed network and network hospitals for quality treatment.",
+    },
+    {
+      icon: CheckIcon,
+      title: "Awards",
+      description:
+        "We've been awarded for innovative product. best claim settlement and service provider from reputed survey organisations.",
+    },
+  ]);
+  const [whyChooseUsData,setWhyChooseUsData]=useState( [
+    {
+      icon: HospitalIcon,
+      title: "1000+",
+      description: "Network Hospitals to avail cashless claims",
+    },
+    {
+      icon: ClaimIcon,
+      title: "89%",
+      description: "Cashless claims settled within 2 hours guaranteed.",
+    },
+    {
+      icon: OfficesIcon,
+      title: "300+",
+      description: "Branch offices available nationwide in India.",
+    },
+    {
+      icon: CheckIcon,
+      title: "1000+",
+      description: "Claims settled since 2024 inception",
+    },
+  ])
   const [urc, setUrc] = useState("");
   const [umc, setUmc] = useState(5555796);
   const [ak, setAk] = useState("");
@@ -199,8 +262,12 @@ const InsurancePolicy = () => {
       sx={{
         flexGrow: 1,
         m: 0,
-        width: { sm: `calc(100% - ${SideBarWidth}px)` },
-        ml: { sm: `${SideBarWidth}px` },
+        width: {
+          xs: "100%",
+          md: `calc(100% - ${SideBarWidth}px)`,
+        },
+        ml: { md: `${SideBarWidth}px` },
+        p: 0,
       }}
       alignItems="stretch"
     >
@@ -221,8 +288,9 @@ const InsurancePolicy = () => {
           sx={{
             py: { xs: 3, md: 4 },
             px: { xs: 2, md: 4 },
-            backgroundColor: "#242424",
-            height: "100%", 
+            backgroundColor: "#ffffff",
+            borderRadius:2,
+            height: "100%",
           }}
           alignItems="stretch"
         >
@@ -239,17 +307,24 @@ const InsurancePolicy = () => {
             <img
               src={LogoUrl}
               alt="Network Logo"
-              height={"50px"}
-              width={"100px"}
-              style={{ objectFit: "cover", marginBottom: "32px" }}
+              height={"70px"}
+              width={"80px"}
+              style={{ objectFit: "cover", marginBottom: "28px" }}
             />
-            <Typography variant="h4" mb={1} color={"#f2f2f2"}>
+            <Typography
+              className={"poppins-font"}
+              fontWeight={"700"}
+              variant="h4"
+              mb={1.5}
+              color={"#3C3C3C"}
+            >
               Insurance is the Key to Your Financial Security{" "}
             </Typography>
             <Typography
+              className={"poppins-font"}
               variant="subtitle2"
-              sx={{ letterSpacing: "1px" }}
-              color={"#e7e7e7"}
+              sx={{}}
+              color={"#3C3C3C"}
             >
               Comprehensive Coverage for Every Aspect of Your Life
             </Typography>
@@ -273,11 +348,17 @@ const InsurancePolicy = () => {
           sx={{
             py: "16px!important",
             px: "16px",
-            backgroundColor: "#242424",
+            backgroundColor: "#ffffff",
+            borderRadius:2
           }}
         >
           <Grid item xs={12} p={2} sx={{ pt: 0, mb: 2, pl: 0 }}>
-            <Typography variant="h5" sx={{ color: "#fff", textAlign: "left" }}>
+            <Typography
+              className={"poppins-font"}
+              fontWeight={"500"}
+              variant="h5"
+              sx={{ color: "#3C3C3C", textAlign: "left" }}
+            >
               Insurance Policy
             </Typography>
           </Grid>
@@ -526,13 +607,14 @@ const InsurancePolicy = () => {
             pt="0px!important"
             sx={{
               pr: { md: "8px!important", xs: "0px!important" },
-              mb: 2.5,
+              // mb: 2.5,
             }}
           >
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              className={"poppins-font"}
               color="primary"
               sx={{
                 backgroundColor: "#007AFF",
@@ -550,228 +632,67 @@ const InsurancePolicy = () => {
         <Grid
           container
           sx={{
-            py: { xs: 3, md: 4 },
+            pt: { xs: 3, md: 4 },
             px: { xs: 2, md: 4 },
-            backgroundColor: "#242424",
-            height: "100%", 
+            pb:2,
+            backgroundColor: "#ffffff",
+            height: "100%",
+            borderRadius:2,
           }}
           alignItems="stretch"
         >
-          <Grid item xs={12} sx={{ textAlign: "left" }}>
-            <Typography variant="h4" color={"#f2f2f2"}>
+          <Grid item xs={12} sx={{ textAlign: "left",mb:3 }}>
+            <Typography
+              className={"poppins-font"}
+              fontWeight={"500"}
+              variant="h4"
+              color={"#3C3C3C"}
+            >
               Why Choose Us
             </Typography>
           </Grid>
-          <Grid
-            container
-            spacing={2}
-            sx={{
-              textAlign: "center",
-              mt: 3,
-            }}
-            alignItems="stretch"
-          >
-            <Grid
-              item
-              xs={12}
-              md={3}
+          <Grid item xs={12}>
+            <Box
               sx={{
-                mb: { xs: 2, md: 0 },
-                textAlign: "center",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "stretch",
+                flexWrap: "wrap",
               }}
             >
-              <Box
-                sx={{
-                  p: 3,
-                  background: "#2b2b2b",
-                  borderRadius: 3,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "700", mb: 1, color: "#f47f34" }}
-                >
-                  1000+
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ mb: 2, color: "#e7e7e7", letterSpacing: "1px" }}
-                >
-                  Network Hospitals to avail cashless claims
-                </Typography>
-                <Box
-                  sx={{
-                    width: "max-content",
-                    backgroundColor: "#f47f34",
-                    borderRadius: 50,
-                    padding: 2,
-                    margin: "0 auto",
-                  }}
-                >
-                  <img
-                    src={HospitalIcon}
-                    alt="HeroImage"
-                    style={{
-                      objectFit: "cover",
-                      marginBottom: "0px",
-                      maxWidth: "70px",
-                    }}
+              {whyChooseUsData?.map((item, index) => {
+                return (
+                  <InsuranceBenefitCard
+                    icon={item?.icon}
+                    title={item?.title}
+                    description={item?.description}
+                    whyChooseUsData={true}
                   />
-                </Box>
-              </Box>
-            </Grid>
-
-            <Grid
-              item
-              xs={12}
-              md={3}
-              sx={{
-                mb: { xs: 2, md: 0 },
-                textAlign: "center",
-              }}
-            >
-              <Box
-                sx={{
-                  p: 3,
-                  background: "#2b2b2b",
-                  borderRadius: 3,
-                  height: "inherit",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "700", mb: 1, color: "#f47f34" }}
-                >
-                  89%
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ mb: 2, color: "#e7e7e7", letterSpacing: "1px" }}
-                >
-                  Cashless claims settled within 2 hours guaranteed.
-                </Typography>
-                <Box
-                  sx={{
-                    width: "max-content",
-                    backgroundColor: "#f47f34",
-                    borderRadius: 50,
-                    padding: 2,
-                    margin: "0 auto",
-                  }}
-                >
-                  <img
-                    src={ClaimIcon}
-                    alt="HeroImage"
-                    style={{
-                      objectFit: "cover",
-                      marginBottom: "0px",
-                      maxWidth: "70px",
-                    }}
-                  />
-                </Box>
-              </Box>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              md={3}
-              sx={{
-                mb: { xs: 2, md: 0 },
-                textAlign: "center",
-              }}
-            >
-              <Box
-                sx={{
-                  p: 3,
-                  background: "#2b2b2b",
-                  borderRadius: 3,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "700", mb: 1, color: "#f47f34" }}
-                >
-                  300+
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ mb: 2, color: "#e7e7e7", letterSpacing: "1px" }}
-                >
-                  Branch offices available nationwide in India.
-                </Typography>
-                <Box
-                  sx={{
-                    width: "max-content",
-                    backgroundColor: "#f47f34",
-                    borderRadius: 50,
-                    padding: 2,
-                    margin: "0 auto",
-                  }}
-                >
-                  <img
-                    src={OfficesIcon}
-                    alt="HeroImage"
-                    style={{
-                      objectFit: "cover",
-                      marginBottom: "0px",
-                      maxWidth: "70px",
-                    }}
-                  />
-                </Box>
-              </Box>
-            </Grid>
-
-            <Grid
-              item
-              xs={12}
-              md={3}
-              sx={{
-                mb: { xs: 2, md: 0 },
-                textAlign: "center",
-              }}
-            >
-              <Box
-                sx={{
-                  p: 3,
-                  background: "#2b2b2b",
-                  borderRadius: 3,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "700", mb: 1, color: "#f47f34" }}
-                >
-                  1000+
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ mb: 2, color: "#e7e7e7", letterSpacing: "1px" }}
-                >
-                  Claims settled since 2024 inception
-                </Typography>
-                <Box
-                  sx={{
-                    width: "max-content",
-                    backgroundColor: "#f47f34",
-                    borderRadius: 50,
-                    padding: 2,
-                    margin: "0 auto",
-                  }}
-                >
-                  <img
-                    src={CheckIcon}
-                    alt="HeroImage"
-                    style={{
-                      objectFit: "cover",
-                      marginBottom: "0px",
-                      maxWidth: "70px",
-                    }}
-                  />
-                </Box>
-              </Box>
-            </Grid>
+                );
+              })}
+            </Box>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item xs={12} sx={{ pr: { xs: 2 }, mb: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "stretch",
+            flexWrap: "wrap",
+          }}
+        >
+          {cardData?.map((item, index) => {
+            return (
+              <InsuranceBenefitCard
+                icon={item?.icon}
+                title={item?.title}
+                description={item?.description}
+              />
+            );
+          })}
+        </Box>
       </Grid>
     </Grid>
   );

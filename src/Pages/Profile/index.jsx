@@ -117,7 +117,7 @@ const Profile = ({ setActiveSideBar }) => {
         }}
       >
         <Box
-          bgcolor={"#242424"}
+          bgcolor={"#ffffff"}
           mb={3}
           sx={{
             display: "flex",
@@ -133,7 +133,7 @@ const Profile = ({ setActiveSideBar }) => {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 3,
@@ -153,9 +153,9 @@ const Profile = ({ setActiveSideBar }) => {
               marginBottom: 3,
 
               "& .MuiOutlinedInput-root": {
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 "& fieldset": {
-                  borderColor: "#6f6f6f",
+                  borderColor: "#a6a6a6",
                 },
                 "&:hover fieldset": {
                   borderColor: "#6f6f6f",
@@ -165,7 +165,7 @@ const Profile = ({ setActiveSideBar }) => {
                 },
               },
               "& .MuiInputLabel-root": {
-                color: "#b4b4b4",
+                color: "#8f8f8f",
               },
               borderRadius: "4px",
             }}
@@ -182,7 +182,7 @@ const Profile = ({ setActiveSideBar }) => {
               marginBottom: 3,
 
               "& .MuiOutlinedInput-root": {
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 "& fieldset": {
                   borderColor: "#6f6f6f",
                 },
@@ -194,7 +194,7 @@ const Profile = ({ setActiveSideBar }) => {
                 },
               },
               "& .MuiInputLabel-root": {
-                color: "#b4b4b4",
+                color: "#8f8f8f",
               },
               borderRadius: "4px",
             }}
@@ -210,10 +210,10 @@ const Profile = ({ setActiveSideBar }) => {
             sx={{
               marginBottom: 3,
               "& .MuiInputLabel-root": {
-                color: "#b4b4b4",
+                color: "#8f8f8f",
               },
               "& .MuiOutlinedInput-root": {
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 "& fieldset": {
                   borderColor: "#6f6f6f",
                 },
@@ -239,7 +239,7 @@ const Profile = ({ setActiveSideBar }) => {
               marginBottom: 3,
 
               "& .MuiOutlinedInput-root": {
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 "& fieldset": {
                   borderColor: "#6f6f6f",
                 },
@@ -251,7 +251,7 @@ const Profile = ({ setActiveSideBar }) => {
                 },
               },
               "& .MuiInputLabel-root": {
-                color: "#b4b4b4",
+                color: "#8f8f8f",
               },
               borderRadius: "4px",
             }}
@@ -268,7 +268,7 @@ const Profile = ({ setActiveSideBar }) => {
               marginBottom: 3,
 
               "& .MuiOutlinedInput-root": {
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 "& fieldset": {
                   borderColor: "#6f6f6f",
                 },
@@ -280,7 +280,7 @@ const Profile = ({ setActiveSideBar }) => {
                 },
               },
               "& .MuiInputLabel-root": {
-                color: "#b4b4b4",
+                color: "#8f8f8f",
               },
 
               borderRadius: "4px",
@@ -290,9 +290,11 @@ const Profile = ({ setActiveSideBar }) => {
             variant="contained"
             onClick={handleSubmit}
             sx={{
-              backgroundColor: "#F2F2F7",
-              color: "#242424",
+              backgroundColor: "#007AFF",
               marginTop: 1,
+              "&:hover": {
+                backgroundColor: "#005BB5",
+              },
             }}
           >
             Submit
@@ -303,7 +305,7 @@ const Profile = ({ setActiveSideBar }) => {
             display: "flex",
             flexDirection: "column",
             height: "max-content",
-            backgroundColor: "#242424",
+            backgroundColor: "#ffffff",
             borderRadius: 1,
             padding: {
               xs: "24px 16px 20px 16px",
@@ -317,7 +319,7 @@ const Profile = ({ setActiveSideBar }) => {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 3,
@@ -337,7 +339,7 @@ const Profile = ({ setActiveSideBar }) => {
               marginBottom: 3,
 
               "& .MuiOutlinedInput-root": {
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 "& fieldset": {
                   borderColor: "#6f6f6f",
                 },
@@ -349,7 +351,7 @@ const Profile = ({ setActiveSideBar }) => {
                 },
               },
               "& .MuiInputLabel-root": {
-                color: "#b4b4b4",
+                color: "#8f8f8f",
               },
               borderRadius: "4px",
             }}
@@ -358,7 +360,7 @@ const Profile = ({ setActiveSideBar }) => {
             variant="contained"
             onClick={handleUpdatePassword}
             sx={{
-              backgroundColor: "#F2F2F7",
+              backgroundColor: "#3C3C3C",
               color: "#242424",
               marginTop: 1,
             }}

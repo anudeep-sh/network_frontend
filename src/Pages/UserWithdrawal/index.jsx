@@ -94,7 +94,7 @@ export default function UserWithdrawal({ setActiveSideBar }) {
     >
       <Box sx={{ p: 3 }}>
         <Box
-          bgcolor={"#242424"}
+          bgcolor={"#ffffff"}
           mb={3}
           sx={{
             display: "flex",
@@ -111,7 +111,7 @@ export default function UserWithdrawal({ setActiveSideBar }) {
             <Typography
               sx={{
                 fontSize: "18px",
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 fontWeight: "500",
                 textAlign: "left",
                 mb: 2,
@@ -156,7 +156,7 @@ export default function UserWithdrawal({ setActiveSideBar }) {
         </Box>
         <Box
           sx={{
-            backgroundColor: "#2C2C2E",
+            backgroundColor: "#ffffff",
             padding: {
               xs: "12px 16px 12px 16px",
               sm: "16px 20px 16px 20px",
@@ -170,7 +170,7 @@ export default function UserWithdrawal({ setActiveSideBar }) {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 2,
@@ -179,38 +179,38 @@ export default function UserWithdrawal({ setActiveSideBar }) {
             Quotas Available
           </Typography>
           <TableContainer component={Paper}>
-            <Table sx={{ bgcolor: "#262626" }}>
+            <Table sx={{ bgcolor: "#f3f4f8" }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Name</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Shortcode</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Amount</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Actions</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Name</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Email</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Shortcode</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Amount</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {wallettData?.map((item) => (
                   <TableRow key={item.id}>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {item.user_name}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {item.user_email}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {item.user_shortcode}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {item.amount}
                     </TableCell>
                     <TableCell>
                       <IconButton
                         onClick={() => handleEdit(item)}
-                        sx={{ bgcolor: "#2f2f2f" }}
+                        sx={{ bgcolor: "#fff" }}
                       >
                         <ModeEditOutlineOutlinedIcon
-                          sx={{ color: "#F2F2F7" }}
+                          sx={{ color: "#3C3C3C" }}
                         />
                       </IconButton>
                     </TableCell>

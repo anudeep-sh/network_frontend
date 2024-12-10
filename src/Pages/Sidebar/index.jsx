@@ -18,6 +18,7 @@ import { AdminSideBarMenuItems } from "../../utils/AdminSideBarMenuItems";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Drawer from "@mui/material/Drawer";
+import LogoUrl from "../../Assets/Images/networkLogo.png";
 
 const drawerWidth = 240;
 
@@ -33,7 +34,15 @@ export default function SideBar({
   const Admin = localStorage.getItem("Role") === "ADMIN";
   const drawer = (
     <div style={{ height: "100dvh" }}>
-      <Toolbar sx={{ minHeight: { xs: '56px', sm: '60px' } }} />
+      <Toolbar sx={{ minHeight: { xs: "56px", sm: "60px" },px:'20px!important' }}>
+        <img
+          src={LogoUrl}
+          alt="Network Logo"
+          height={isMediumScreen ? 25 : 42}
+          width={isMediumScreen ? 25 : 42}
+          // style={{ marginLeft: isMediumScreen ? "5px" : "24px" }}
+        />
+      </Toolbar>
       <Divider />
       <Box
         sx={{
@@ -119,8 +128,8 @@ export default function SideBar({
         component="nav"
         sx={{
           width: { sm: drawerWidth },
-          flexShrink: { sm: 0 },
-          backgroundColor: "#242426",
+          flexShrink: { md: 0 },
+          backgroundColor: "#FAFAFA",
         }}
         aria-label="mailbox folders"
       >
@@ -132,11 +141,11 @@ export default function SideBar({
             keepMounted: true,
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#242426",
+              backgroundColor: "#FAFAFA",
               overflowY: "hidden",
             },
           }}
@@ -146,11 +155,11 @@ export default function SideBar({
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
+            display: { xs: "none", md: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#242426",
+              backgroundColor: "#FAFAFA",
               overflowY: "hidden",
             },
           }}

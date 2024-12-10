@@ -10,7 +10,6 @@ import {
   Paper,
   TextField,
   Button,
- 
   IconButton,
 } from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
@@ -118,7 +117,7 @@ export default function UserQuotas({ setActiveSideBar }) {
     >
       <Box sx={{ p: 3 }}>
         <Box
-          bgcolor={"#242424"}
+          bgcolor={"#ffffff"}
           mb={3}
           sx={{
             display: "flex",
@@ -134,7 +133,7 @@ export default function UserQuotas({ setActiveSideBar }) {
             <Typography
               sx={{
                 fontSize: "18px",
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 fontWeight: "500",
                 textAlign: "left",
                 mb: 2,
@@ -146,7 +145,7 @@ export default function UserQuotas({ setActiveSideBar }) {
 
           <Box sx={{ display: "flex", gap: 2, mb: 0 }}>
             <CustomSelect
-              usingInDarkMode={true}
+              usingInDarkMode={false}
               value={selectedLevel}
               onChange={handleLevelChange}
               required={true}
@@ -167,7 +166,16 @@ export default function UserQuotas({ setActiveSideBar }) {
               onChange={handleInputChange}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  color: "#F2F2F7", // Text color
+                  color: "#3C3C3C", // Text color
+                  "& fieldset": {
+                    borderColor: "#3C3C3C",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#3C3C3C",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#3C3C3C",
+                  },
                 },
                 "&.Mui-disabled": {
                   color: "#9e9e9e", // Text color when disabled
@@ -177,7 +185,7 @@ export default function UserQuotas({ setActiveSideBar }) {
                   backgroundColor: "#e0e0e0", // Background color when disabled
                 },
                 width: "300px",
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 borderRadius: "4px",
               }}
               disabled={!selectedQuota} // Disable if no quota is selected
@@ -202,7 +210,7 @@ export default function UserQuotas({ setActiveSideBar }) {
         </Box>
         <Box
           sx={{
-            backgroundColor: "#2C2C2E",
+            backgroundColor: "#ffffff",
             padding: {
               xs: "12px 16px 12px 16px",
               sm: "16px 20px 16px 20px",
@@ -216,7 +224,7 @@ export default function UserQuotas({ setActiveSideBar }) {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 2,
@@ -225,50 +233,50 @@ export default function UserQuotas({ setActiveSideBar }) {
             Quotas Available
           </Typography>
           <TableContainer component={Paper}>
-            <Table sx={{ bgcolor: "#262626" }}>
+            <Table sx={{ bgcolor: "#f3f4f8" }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Name</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>shortcode</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Quota1</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Quota2</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Quota3</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Quota4</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Actions</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Name</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>shortcode</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Email</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Quota1</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Quota2</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Quota3</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Quota4</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {quotaData.map((quota) => (
                   <TableRow key={quota.id}>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.name}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.shortcode}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.emailId}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.level1_quota}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.level2_quota}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.level3_quota}
                     </TableCell>
-                    <TableCell sx={{ color: "#F2F2F7" }}>
+                    <TableCell sx={{ color: "#3C3C3C" }}>
                       {quota.level4_quota}
                     </TableCell>
                     <TableCell>
                       <IconButton
                         onClick={() => handleEdit(quota)}
-                        sx={{ bgcolor: "#2f2f2f" }}
+                        sx={{ bgcolor: "#ffffff" }}
                       >
                         <ModeEditOutlineOutlinedIcon
-                          sx={{ color: "#F2F2F7" }}
+                          sx={{ color: "#3C3C3C" }}
                         />
                       </IconButton>
                     </TableCell>

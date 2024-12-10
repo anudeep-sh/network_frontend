@@ -5,5 +5,8 @@
 body{
   /* overflow-y: hidden; */
   overflow-x: hidden;
-  background-color: #181818;
+  background-color: #F3F4F8;
+}
+.poppins-font {
+  font-family: 'Poppins', sans-serif!important;
 }

@@ -34,7 +34,8 @@ const InputBox = ({
         mb={"5px"}
         fontSize={"12px"}
         sx={{ color: usingInDarkMode ? "#f2f2f2" : "#000000de" }}
-      >
+        className={'poppins-font'}
+        >
         {label}
       </Typography>
       <TextField
@@ -67,11 +68,16 @@ const InputBox = ({
         sx={{
           color: "#f2f2f2",
           "& .MuiInputBase-root": {
+            fontFamily: "'Poppins', sans-serif",
             height: "40px",
             color: usingInDarkMode ? "#f2f2f2" : "#000000de",
           },
           "& .MuiInputBase-input": {
+            fontFamily: "'Poppins', sans-serif",
             padding: "9px 12px",
+          },
+          "& .MuiFormHelperText-root": {
+            fontFamily: "'Poppins', sans-serif",
           },
         }}
       />

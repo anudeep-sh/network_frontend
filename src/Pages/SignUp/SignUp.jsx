@@ -71,7 +71,7 @@ const SignUp = () => {
         if (Token) {
           localStorage.setItem("Token", Token);
           localStorage.setItem("Role", data?.role);
-          localStorage.setItem("user_details",JSON.stringify(data?.user))
+          localStorage.setItem("user_details", JSON.stringify(data?.user));
           handleAlert(data?.msg, "success");
           navigate("/dashboard");
         } else {
@@ -146,11 +146,20 @@ const SignUp = () => {
       >
         <Box display={"flex"} gap={"8px"} alignItems={"center"}>
           <img src={Logo} alt="Network Logo" height={40} width={40} />
-          <Typography fontSize={"30px"} color={"#fff"}>
+          <Typography
+            fontSize={"30px"}
+            color={"#3C3C3C"}
+            fontWeight={"600"}
+            className={"poppins-font"}
+          >
             Fi Wallet
           </Typography>
         </Box>
-        <Typography fontSize={"16px"} color={"#fff"}>
+        <Typography
+          fontSize={"16px"}
+          color={"#3C3C3C"}
+          className={"poppins-font"}
+        >
           Sign in or Create an account
         </Typography>
       </Box>
@@ -159,8 +168,10 @@ const SignUp = () => {
         flexDirection="column"
         alignItems="center"
         height={isMediumScreen ? "90vh" : "80vh"}
-        padding={isMediumScreen ? "10px 40px" : "65px"}
-        boxShadow={3}
+        padding={isMediumScreen ? "20px 40px" : "48px"}
+        sx={{
+          boxShadow: "0px 2px 12px rgba(0, 0, 0, 0.05)",
+        }}
         borderRadius={2}
         bgcolor="background.paper"
         width={isSmallScreen ? "80vw" : "420px"}
@@ -185,14 +196,14 @@ const SignUp = () => {
                 mb={"10px"}
               >
                 <img src={Logo} alt="Network Logo" height={20} width={20} />
-                <Typography fontSize={"20px"}>Network</Typography>
+                <Typography fontSize={"20px"} className={"poppins-font"}>Network</Typography>
               </Box>
             )}
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom className={"poppins-font"}>
               Sign up
             </Typography>
             <Box mt={1} mb={"70px"}>
-              <Typography variant="body2">
+              <Typography variant="body2" className={"poppins-font"}>
                 Already have an account?{" "}
                 <Link
                   to={"/"}

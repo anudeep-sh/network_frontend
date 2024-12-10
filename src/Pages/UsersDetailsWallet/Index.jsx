@@ -123,7 +123,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
     >
       <Box sx={{ p: 3 }}>
         <Box
-          bgcolor={"#242424"}
+          bgcolor={"#ffffff"}
           mb={3}
           sx={{
             display: "flex",
@@ -140,7 +140,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
             <Typography
               sx={{
                 fontSize: "18px",
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 fontWeight: "500",
                 textAlign: "left",
                 mb: 2,
@@ -163,16 +163,15 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                   color: "#6f6f6f",
                 },
                 "& .MuiOutlinedInput-root": {
-                  color: "#F2F2F7",
+                  color: "#3C3C3C",
                   "& fieldset": {
-                    borderColor: "#6f6f6f",
-                    color: "#F2F2F7",
+                    borderColor: "#3C3C3C",
                   },
                   "&:hover fieldset": {
-                    borderColor: "#6f6f6f",
+                    borderColor: "#3C3C3C",
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#6f6f6f",
+                    borderColor: "#3C3C3C",
                   },
                 },
                 "&.Mui-disabled": {
@@ -183,7 +182,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                   backgroundColor: "#e0e0e0",
                 },
                 width: "300px",
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 borderRadius: "4px",
               }}
               disabled={!selectedItem}
@@ -218,10 +217,10 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                   color: "#6f6f6f",
                 },
                 "& .MuiOutlinedInput-root": {
-                  color: "#F2F2F7",
+                  color: "#3C3C3C",
                   "& fieldset": {
                     borderColor: "#6f6f6f",
-                    color: "#F2F2F7",
+                    color: "#3C3C3C",
                   },
                   "&:hover fieldset": {
                     borderColor: "#6f6f6f",
@@ -238,7 +237,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                   backgroundColor: "#e0e0e0",
                 },
                 width: "300px",
-                color: "#F2F2F7",
+                color: "#3C3C3C",
                 borderRadius: "4px",
               }}
               disabled={!selectedItem}
@@ -264,7 +263,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
         </Box>
         <Box
           sx={{
-            backgroundColor: "#2C2C2E",
+            backgroundColor: "#ffffff",
             padding: {
               xs: "12px 16px",
               sm: "16px 20px",
@@ -278,7 +277,7 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#F2F2F7",
+              color: "#3C3C3C",
               fontWeight: "500",
               textAlign: "left",
               mb: 2,
@@ -287,14 +286,14 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
             Users Wallet History
           </Typography>
           <TableContainer component={Paper}>
-            <Table sx={{ bgcolor: "#262626" }}>
+            <Table sx={{ bgcolor: "#f3f4f8" }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Name</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Level</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Hub</TableCell>
-                  <TableCell sx={{ color: "#F2F2F7" }}>Actions</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Name</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Email</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Level</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Hub</TableCell>
+                  <TableCell sx={{ color: "#3C3C3C" }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -304,16 +303,16 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                       onClick={() => handleRowClick(item.user.id)}
                       sx={{ cursor: "pointer" }}
                     >
-                      <TableCell sx={{ color: "#F2F2F7" }}>
+                      <TableCell sx={{ color: "#3C3C3C" }}>
                         {item.user.name}
                       </TableCell>
-                      <TableCell sx={{ color: "#F2F2F7" }}>
+                      <TableCell sx={{ color: "#3C3C3C" }}>
                         {item.user.emailId}
                       </TableCell>
-                      <TableCell sx={{ color: "#F2F2F7" }}>
+                      <TableCell sx={{ color: "#3C3C3C" }}>
                         {item.level}
                       </TableCell>
-                      <TableCell sx={{ color: "#F2F2F7" }}>
+                      <TableCell sx={{ color: "#3C3C3C" }}>
                         {item.hubName}
                       </TableCell>
                       <TableCell>
@@ -322,10 +321,10 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                             e.stopPropagation();
                             handleEdit(item);
                           }}
-                          sx={{ bgcolor: "#2f2f2f" }}
+                          sx={{ bgcolor: "#ffffff" }}
                         >
                           <ModeEditOutlineOutlinedIcon
-                            sx={{ color: "#F2F2F7" }}
+                            sx={{ color: "#3C3C3C" }}
                           />
                         </IconButton>
                       </TableCell>
@@ -340,16 +339,16 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                             >
                               <TableHead>
                                 <TableRow>
-                                  <TableCell sx={{ color: "#F2F2F7" }}>
+                                  <TableCell sx={{ color: "#3C3C3C" }}>
                                     Transaction ID
                                   </TableCell>
-                                  <TableCell sx={{ color: "#F2F2F7" }}>
+                                  <TableCell sx={{ color: "#3C3C3C" }}>
                                     Amount
                                   </TableCell>
-                                  <TableCell sx={{ color: "#F2F2F7" }}>
+                                  <TableCell sx={{ color: "#3C3C3C" }}>
                                     Type
                                   </TableCell>
-                                  <TableCell sx={{ color: "#F2F2F7" }}>
+                                  <TableCell sx={{ color: "#3C3C3C" }}>
                                     Timestamp
                                   </TableCell>
                                 </TableRow>
@@ -357,16 +356,16 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                               <TableBody>
                                 {item.walletHistory.map((historyItem) => (
                                   <TableRow key={historyItem.id}>
-                                    <TableCell sx={{ color: "#F2F2F7" }}>
+                                    <TableCell sx={{ color: "#3C3C3C" }}>
                                       {historyItem.id}
                                     </TableCell>
-                                    <TableCell sx={{ color: "#F2F2F7" }}>
+                                    <TableCell sx={{ color: "#3C3C3C" }}>
                                       {historyItem.amount}
                                     </TableCell>
-                                    <TableCell sx={{ color: "#F2F2F7" }}>
+                                    <TableCell sx={{ color: "#3C3C3C" }}>
                                       {historyItem.type}
                                     </TableCell>
-                                    <TableCell sx={{ color: "#F2F2F7" }}>
+                                    <TableCell sx={{ color: "#3C3C3C" }}>
                                       {new Date(
                                         historyItem.timestamp
                                       ).toLocaleString()}

@@ -45,7 +45,7 @@ export default function Withdraw() {
         component="form"
         onSubmit={handleWithdraw}
         sx={{
-          backgroundColor: "#2C2C2E",
+          backgroundColor: "#ffffff",
           padding: "24px",
           borderRadius: "8px",
           maxWidth: "400px",
@@ -54,7 +54,7 @@ export default function Withdraw() {
       >
         <Typography
           variant="h6"
-          sx={{ color: "#F2F2F7", marginBottom: "16px", textAlign: "center" }}
+          sx={{ color: "#3C3C3C", marginBottom: "16px", textAlign: "center" }}
         >
           Withdrawal Form
         </Typography>
@@ -67,25 +67,25 @@ export default function Withdraw() {
           type="number"
           sx={{
             marginBottom: "16px",
-            input: { color: "#F2F2F7" },
-            label: { color: "#F2F2F7" },
+            input: { color: "#3C3C3C" },
+            label: { color: "#3C3C3C" },
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "#F2F2F7",
+                borderColor: "#3C3C3C",
               },
               "&:hover fieldset": {
-                borderColor: "#F2F2F7",
+                borderColor: "#3C3C3C",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#F2F2F7",
+                borderColor: "#3C3C3C",
               },
             },
           }}
           InputLabelProps={{
-            style: { color: "#F2F2F7" },
+            style: { color: "#3C3C3C" },
           }}
           InputProps={{
-            style: { color: "#F2F2F7" },
+            style: { color: "#3C3C3C" },
           }}
         />
         <Button

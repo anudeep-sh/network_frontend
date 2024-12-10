@@ -46,31 +46,31 @@ export default function SideBarItem({
             padding: "8px 20px",
             marginBottom: "4px",
             gap:'12px',
-            backgroundColor: active ? "#181818" : "transparent",
+            backgroundColor: active ? "#F0F0F0" : "transparent",
             "&:hover": {
-              backgroundColor: "#181818",
+              backgroundColor: "#F0F0F0",
               cursor: "pointer",
               "& .MuiTypography-root, & .MuiIconButton-root": {
-                color: "#F7F7F7",
+                color: "#030303",
               },
               "& .MuiSvgIcon-root": {
-                color: "#F7F7F7",
+                color: "#030303",
               },
             },
           }}
           onClick={handleNavigation}
           // onClick={menuList.length > 0 ? handleToggle : onClick}
         >
-          <ListItemIcon sx={{ minWidth: '20px', height: '24px',}}   color={active ? "#F7F7F7" : "#9898A1"}>
+          <ListItemIcon sx={{ minWidth: '20px', height: '24px',}}   color={active ? "#030303" : "#9898A1"}>
             {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-            <span style={{color:active ? "#F7F7F7" : "#9898A1"}}>{Icon}</span>
+            <span style={{color:active ? "#030303" : "#9898A1"}}>{Icon}</span>
           </ListItemIcon>
           <ListItemText
             primary={
               <Typography
                 display="flex"
                 alignItems="center"
-                color={active ? "#F7F7F7" : "#9898A1"}
+                color={active ? "#030303" : "#030303"}
                 lineHeight="20px"
                 gap="12px"
                 sx={{

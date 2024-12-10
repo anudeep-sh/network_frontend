@@ -15,6 +15,7 @@ const CustomButton = ({
       onClick={onClick}
       fullWidth
       disabled={disabled}
+      className={"poppins-font"}
       sx={{
         borderRadius: borderRadius ? borderRadius : "10px",
         display: "flex",
