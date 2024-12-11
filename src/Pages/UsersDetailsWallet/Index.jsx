@@ -339,16 +339,16 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                             >
                               <TableHead>
                                 <TableRow>
-                                  <TableCell sx={{ color: "#3C3C3C" }}>
+                                  <TableCell sx={{ color: "#ffffff" }}>
                                     Transaction ID
                                   </TableCell>
-                                  <TableCell sx={{ color: "#3C3C3C" }}>
+                                  <TableCell sx={{ color: "#ffffff" }}>
                                     Amount
                                   </TableCell>
-                                  <TableCell sx={{ color: "#3C3C3C" }}>
+                                  <TableCell sx={{ color: "#ffffff" }}>
                                     Type
                                   </TableCell>
-                                  <TableCell sx={{ color: "#3C3C3C" }}>
+                                  <TableCell sx={{ color: "#ffffff" }}>
                                     Timestamp
                                   </TableCell>
                                 </TableRow>
@@ -356,16 +356,16 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
                               <TableBody>
                                 {item.walletHistory.map((historyItem) => (
                                   <TableRow key={historyItem.id}>
-                                    <TableCell sx={{ color: "#3C3C3C" }}>
+                                    <TableCell sx={{ color: "#ffffff" }}>
                                       {historyItem.id}
                                     </TableCell>
-                                    <TableCell sx={{ color: "#3C3C3C" }}>
+                                    <TableCell sx={{ color: "#ffffff" }}>
                                       {historyItem.amount}
                                     </TableCell>
-                                    <TableCell sx={{ color: "#3C3C3C" }}>
+                                    <TableCell sx={{ color: "#ffffff" }}>
                                       {historyItem.type}
                                     </TableCell>
-                                    <TableCell sx={{ color: "#3C3C3C" }}>
+                                    <TableCell sx={{ color: "#ffffff" }}>
                                       {new Date(
                                         historyItem.timestamp
                                       ).toLocaleString()}
