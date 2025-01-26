@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
 import DashBoardWidget from "../../Components/Widget/DashboardWidget";
 import { widgetElements } from "../../utils/dashBoardWidgetElements";
@@ -11,6 +11,7 @@ import Withdrawal from "../../Assets/Images/withdrawal.svg";
 import { handleAlert } from "../../utils/handleAlert";
 import { WalletsRequests } from "../../api/requests/Wallets/wallets";
 import GetValidatedTokenData from "../../utils/helper";
+import { Colors } from "../../Theme/Theme";
 // import MembersTree from "../../Components/MembersTree";
 
 export default function DashBoard({ setActiveSideBar }) {
@@ -43,7 +44,6 @@ export default function DashBoard({ setActiveSideBar }) {
     const getWalletData = async () => {
       try {
         const response = await WalletsRequests.getWalletHistory();
-        console.log(response, data, "response.data");
         let totalCredit = 0;
         let totalWithdrawal = 0;
 
@@ -76,7 +76,6 @@ export default function DashBoard({ setActiveSideBar }) {
           //   value: `Rs. ${totalWithdrawal}`,
           // },
         ]);
-        console.log("response", response);
         setLoading(false);
       } catch (error) {
         handleAlert("Something went wrong", "error");
@@ -137,14 +136,15 @@ export default function DashBoard({ setActiveSideBar }) {
         <Typography
           sx={{
             fontSize: "18px",
-            color: "#3C3C3C",
-            fontWeight: "500",
+            color: Colors.primaryTextColor,
+            fontWeight: "700",
             textAlign: "left",
             mb: 3,
           }}
         >
           Members Tree
         </Typography>
+        <Divider sx={{borderColor:Colors.dividerColor}}/>
         <MembersTree />
       </Box>
     </Box>

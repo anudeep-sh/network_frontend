@@ -5,6 +5,7 @@ import userImg from "../../Assets/Images/user1.png";
 import CustomNode from "./CustomNode/CustomNode";
 import { UserTreeApi } from "../../api/requests/network/network";
 import { ReactComponent as UserSvg } from "../../Assets/Images/SolidPersonIcon.svg";
+import { Colors } from "../../Theme/Theme";
 
 
 
@@ -12,7 +13,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
   <g transform="translate(-146, -33)" onClick={toggleNode}>
     {/* Centering the entire node */}
     {/* Outer frame for the node */}
-    <rect width="292" height="66" rx="8" ry="8" fill="#f1f1f1" stroke="none" />
+    <rect width="292" height="66" rx="8" ry="8" fill={Colors.white} stroke={Colors.dividerColor} strokeWidth={'1px'} />
     {/* Inner circle for the user icon */}
 
     {/* The imported SVG icon */}
@@ -59,7 +60,6 @@ function MembersTree() {
       const res = await UserTreeApi.getUserNetwork();
       setOrgChart(res.data);
     } catch (error) {
-      console.log(error);
     }
   };
   useEffect(() => {

@@ -17,6 +17,7 @@ import { SignupInputFields } from "../../utils/SignUpFields";
 import Logo from "../../Assets/Images/networkLogo.png";
 import { UserAuthApi } from "../../api/requests/userAuth/userAuthApi";
 import { handleAlert } from "../../utils/handleAlert";
+import { Colors } from "../../Theme/Theme";
 
 const SignUp = () => {
   const theme = useTheme();
@@ -148,7 +149,7 @@ const SignUp = () => {
           <img src={Logo} alt="Network Logo" height={40} width={40} />
           <Typography
             fontSize={"30px"}
-            color={"#3C3C3C"}
+            color={Colors.primaryTextColor}
             fontWeight={"600"}
             className={"poppins-font"}
           >
@@ -157,7 +158,7 @@ const SignUp = () => {
         </Box>
         <Typography
           fontSize={"16px"}
-          color={"#3C3C3C"}
+          color={Colors.primaryTextColor}
           className={"poppins-font"}
         >
           Sign in or Create an account
@@ -196,21 +197,21 @@ const SignUp = () => {
                 mb={"10px"}
               >
                 <img src={Logo} alt="Network Logo" height={20} width={20} />
-                <Typography fontSize={"20px"} className={"poppins-font"}>Network</Typography>
+                <Typography fontSize={"20px"} className={"poppins-font"} sx={{color:Colors.primaryTextColor}}>Network</Typography>
               </Box>
             )}
-            <Typography variant="h5" gutterBottom className={"poppins-font"}>
+            <Typography variant="h5" gutterBottom className={"poppins-font"} color={Colors.primaryTextColor} sx={{fontWeight:500}}>
               Sign up
             </Typography>
             <Box mt={1} mb={"70px"}>
-              <Typography variant="body2" className={"poppins-font"}>
+              <Typography variant="body2" className={"poppins-font"} color={Colors.primaryTextColor}>
                 Already have an account?{" "}
                 <Link
                   to={"/"}
                   color="primary"
                   style={{
                     textDecoration: "none",
-                    color: "#0372c1",
+                    color: Colors.primary,
                   }}
                 >
                   Sign in
@@ -266,7 +267,13 @@ const SignUp = () => {
             height={"fit-content"}
           >
             <Box width="fit-content">
-              <CustomButton onClick={handleSubmit} borderRadius={"40px"}>
+              <CustomButton onClick={handleSubmit} borderRadius={"8px"}  customStyles={{
+                  backgroundColor: Colors.primary,
+                  color: Colors.white,
+                  "&:hover": {
+                    backgroundColor: Colors.hoverColorBtn,
+                  },
+                }}>
                 Sign up
               </CustomButton>
             </Box>

@@ -36,6 +36,7 @@ import PendingUserWithdrawal from "./Pages/ApprovedWithdrawals";
 import ApprovedWithdrawals from "./Pages/ApprovedWithdrawals";
 import UsersDetailsWallet from "./Pages/UsersDetailsWallet/Index";
 import InsurancePolicy from "./Pages/InsurancePolicy";
+import { Colors } from "./Theme/Theme/index";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
@@ -43,7 +44,6 @@ function App() {
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const Admin = localStorage.getItem("Role") === "ADMIN";
-  console.log(Admin, "admin");
 
   const Layout = () => {
     const theme = useTheme();
@@ -54,7 +54,6 @@ function App() {
 
     const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen);
-      console.log(mobileOpen, "mobileOpen called function");
     };
     const handleDrawerClose = () => {
       setIsClosing(true);
@@ -75,7 +74,7 @@ function App() {
           mobileOpen={mobileOpen}
           handleDrawerToggle={handleDrawerToggle}
         />
-          <Outlet />
+        <Outlet />
       </>
     );
   };
@@ -84,7 +83,7 @@ function App() {
     <div
       className="App"
       style={{
-        backgroundColor: "#F3F4F8",
+        backgroundColor: Colors.bgColor,
         height: "100%",
         margin: 0,
         padding: 0,
@@ -96,7 +95,9 @@ function App() {
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<SignIn />} />
-            <Route element={<ProtectedRoute />}>
+            <Route
+              element={<ProtectedRoute allowedRoles={["USER", "ADMIN"]} />}
+            >
               <Route element={<Layout />}>
                 <Route
                   path="/dashboard"
@@ -118,7 +119,7 @@ function App() {
                 <Route path="/withdrawal" element={<WithDrawal />} />
                 <Route path="/insurance-policy" element={<InsurancePolicy />} />
                 <Route path="/profile" element={<Profile />} />
-                {Admin && (
+                <Route element={<ProtectedRoute allowedRoles={["ADMIN"]} />}>
                   <>
                     <Route path="/user-quotas" element={<UserQuotas />} />
                     <Route
@@ -134,7 +135,7 @@ function App() {
                       element={<UsersDetailsWallet />}
                     />
                   </>
-                )}
+                </Route>{" "}
                 <Route path="/support" element={<Support />} />
               </Route>
             </Route>

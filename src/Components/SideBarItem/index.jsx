@@ -12,6 +12,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { Colors } from "../../Theme/Theme";
 
 export default function SideBarItem({
   Icon,
@@ -46,31 +47,31 @@ export default function SideBarItem({
             padding: "8px 20px",
             marginBottom: "4px",
             gap:'12px',
-            backgroundColor: active ? "#F0F0F0" : "transparent",
+            backgroundColor: active ? Colors.BgColorLite : "transparent",
             "&:hover": {
-              backgroundColor: "#F0F0F0",
+              backgroundColor: Colors.BgColorLite,
               cursor: "pointer",
               "& .MuiTypography-root, & .MuiIconButton-root": {
-                color: "#030303",
+                color: Colors.primaryTextColor,
               },
               "& .MuiSvgIcon-root": {
-                color: "#030303",
+                color: Colors.primaryTextColor,
               },
             },
           }}
           onClick={handleNavigation}
           // onClick={menuList.length > 0 ? handleToggle : onClick}
         >
-          <ListItemIcon sx={{ minWidth: '20px', height: '24px',}}   color={active ? "#030303" : "#9898A1"}>
+          <ListItemIcon sx={{ minWidth: '20px', height: '24px',}}   color={active ? Colors.primaryTextColor : Colors.secondaryColor}>
             {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-            <span style={{color:active ? "#030303" : "#9898A1"}}>{Icon}</span>
+            <span style={{color: active ? Colors.primaryTextColor : Colors.secondaryColor }}>{Icon}</span>
           </ListItemIcon>
           <ListItemText
             primary={
               <Typography
                 display="flex"
                 alignItems="center"
-                color={active ? "#030303" : "#030303"}
+                color={active ? Colors.primaryTextColor : "#030303"}
                 lineHeight="20px"
                 gap="12px"
                 sx={{

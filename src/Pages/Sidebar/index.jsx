@@ -19,6 +19,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Drawer from "@mui/material/Drawer";
 import LogoUrl from "../../Assets/Images/networkLogo.png";
+import { Colors } from "../../Theme/Theme";
 
 const drawerWidth = 240;
 
@@ -43,7 +44,7 @@ export default function SideBar({
           // style={{ marginLeft: isMediumScreen ? "5px" : "24px" }}
         />
       </Toolbar>
-      <Divider />
+      <Divider sx={{borderColor:Colors.dividerColor}}/>
       <Box
         sx={{
           display: "flex",
@@ -145,8 +146,9 @@ export default function SideBar({
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#FAFAFA",
+              backgroundColor: Colors.white,
               overflowY: "hidden",
+              borderColor:Colors.dividerColor
             },
           }}
         >
@@ -159,8 +161,9 @@ export default function SideBar({
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#FAFAFA",
+              backgroundColor:Colors.white,
               overflowY: "hidden",
+              borderColor:Colors.dividerColor
             },
           }}
           open

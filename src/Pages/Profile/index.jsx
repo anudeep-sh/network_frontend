@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
 import { hub } from "../../api/requests/hubs/hubs";
+import { Colors } from "../../Theme/Theme";
 
 const Profile = ({ setActiveSideBar }) => {
   const [userId, setUserId] = useState(null);
@@ -11,7 +12,6 @@ const Profile = ({ setActiveSideBar }) => {
     try {
       const data = await hub.getUsersDetails();
       setUserId(data?.data?.id);
-      console.log(data.data,"data.data")
       setFormData({
         pan_number: data?.data?.pan_number || "",
         aadhar_number: data?.data?.aadhar_number || "",
@@ -21,7 +21,6 @@ const Profile = ({ setActiveSideBar }) => {
       });
     } catch (error) {
       alert(error?.response?.data);
-      console.log(error, "error");
     }
   };
 
@@ -49,15 +48,12 @@ const Profile = ({ setActiveSideBar }) => {
       userId: userId,
       ...formData,
     };
-    // Make your PATCH call here with the requestBody
     try {
       const response = await hub.patchUpdateUserDetails(requestBody);
       if (response) {
         alert(" updated successfully!");
       }
-      // Optionally, update the state with the new quota value
     } catch (error) {
-      console.log(error, "error");
       alert("Failed to update quota");
     }
   };
@@ -72,15 +68,13 @@ const Profile = ({ setActiveSideBar }) => {
         const response = await hub.patchUpdateUserPassword(userId, {
           newPassword: passwordValue,
         });
-        console.log(response,"response")
         if (response) {
           alert(" updated password successfully!");
-          setPasswordValue("")
+          setPasswordValue("");
         }
       } catch (error) {
-        console.log(error, "error");
         alert("Failed to update quota");
-        setPasswordValue("")
+        setPasswordValue("");
       }
     } else {
       alert("Please select a user and enter a password before saving.");
@@ -290,10 +284,10 @@ const Profile = ({ setActiveSideBar }) => {
             variant="contained"
             onClick={handleSubmit}
             sx={{
-              backgroundColor: "#007AFF",
-              marginTop: 1,
+              backgroundColor: Colors.primary,
+              color: Colors.white,
               "&:hover": {
-                backgroundColor: "#005BB5",
+                backgroundColor: Colors.hoverColorBtn,
               },
             }}
           >
@@ -360,12 +354,13 @@ const Profile = ({ setActiveSideBar }) => {
             variant="contained"
             onClick={handleUpdatePassword}
             sx={{
-              backgroundColor: "#3C3C3C",
-              color: "#242424",
-              marginTop: 1,
+              backgroundColor: Colors.primary,
+              color: Colors.white,
+              "&:hover": {
+                backgroundColor: Colors.hoverColorBtn,
+              },
             }}
             disabled={!passwordValue}
-
           >
             Update Password
           </Button>

@@ -7,8 +7,10 @@ import {
   Select,
   FormControl,
   InputLabel,
+  Divider,
   Button,
 } from "@mui/material";
+
 import DashBoardWidget from "../../Components/Widget/DashboardWidget";
 import level1 from "../../Assets/Images/hubs/level1.svg";
 import level2 from "../../Assets/Images/hubs/level2.svg";
@@ -18,6 +20,7 @@ import InputBox from "../../Components/InputBox";
 import CustomSelect from "../../Components/CustomSelect/CustomSelect";
 import { hub } from "../../api/requests/hubs/hubs";
 import { ReactComponent as UserIcon } from "../../Assets/Images/person.svg";
+import { Colors } from "../../Theme/Theme";
 const Hubs = ({ setActiveSideBar }) => {
   const [member, setMember] = useState({ shortcode: "", level: 4 });
   const [hubsData, setHubsData] = useState([]);
@@ -36,16 +39,13 @@ const Hubs = ({ setActiveSideBar }) => {
     try {
       const response = await hub.getHubs();
       const values = [15000, 10000, 7000, 4500];
-      // Map backend data to include the corresponding image
       const updatedHubsData = response.levels.map((level,index) => ({
-        icon: levelImages[level.level], // Get the image based on the level
-        title: level.name.replace(/_/g, " "), // Replacing underscores with spaces for better readability
-        // value: `Rs. ${level.price}`, // Formatting price with 'Rs.'
-        value: `Rs. ${values[index]}`, // Formatting price with 'Rs.'
+        icon: levelImages[level.level], 
+        title: level.name.replace(/_/g, " "), 
+        value: `Rs. ${values[index]}`, 
       }));
       setHubsData(updatedHubsData);
     } catch (error) {
-      console.log(error);
     }
   };
 
@@ -56,7 +56,6 @@ const Hubs = ({ setActiveSideBar }) => {
       setUserHubInfo(data?.userInfo);
     } catch (error) {
       alert(error?.response?.data);
-      console.log(error, "cool");
     }
   };
 
@@ -71,7 +70,6 @@ const Hubs = ({ setActiveSideBar }) => {
       getQuotas();
     } catch (error) {
       alert(error?.response?.data);
-      console.log(error);
     }
   };
 
@@ -166,23 +164,27 @@ const Hubs = ({ setActiveSideBar }) => {
             width: { xs: "-webkit-fill-available", md: "25%" },
           }}
         >
+          <Box sx={{width:'100%',mb:{xs:2}}}>
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#3C3C3C",
-              fontWeight: "500",
+              color: Colors.primaryTextColor,
+              fontWeight: "700",
               textAlign: "left",
-              mb: 3,
+              mb:{xs:2}
             }}
           >
             Add Member
           </Typography>
+          <Divider sx={{borderColor:Colors.dividerColor}}/>
+          </Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               alignItems: "center",
+              width:'100%'
             }}
           >
             <InputBox
@@ -209,8 +211,16 @@ const Hubs = ({ setActiveSideBar }) => {
             />
             <Button
               variant="contained"
-              sx={{ width: "100%", mt: 2 }}
+              sx={{
+                mt:2,
+                backgroundColor: Colors.primary,
+                color: Colors.white,
+                "&:hover": {
+                  backgroundColor: Colors.hoverColorBtn,
+                },
+              }}
               onClick={handleSubmit}
+              fullWidth
             >
               Join
             </Button>
@@ -237,22 +247,24 @@ const Hubs = ({ setActiveSideBar }) => {
             width: { xs: "-webkit-fill-available", md: "40%" },
           }}
         >
-          <Typography
+          <Box sx={{width:'100%',mb:{xs:2}}}><Typography
             sx={{
               fontSize: "18px",
-              color: "#3C3C3C",
-              fontWeight: "500",
+              color: Colors.primaryTextColor,
+              fontWeight: "700",
               textAlign: "left",
-              mb: 3,
+              mb:{xs:2}
             }}
           >
             Quotas Available
           </Typography>
+          <Divider sx={{borderColor:Colors.dividerColor}}/>
+          </Box>
           <Box
             sx={{
               p: 2,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
+              border: `1px solid ${Colors.dividerColor}`,
               borderRadius: 2,
             }}
           >
@@ -289,11 +301,12 @@ const Hubs = ({ setActiveSideBar }) => {
                       sx={{
                         letterSpacing: "1%",
                         lineHeight: 1.3,
-                        mb: 1,
+                        mb: 0.5,
                         fontWeight: "600",
+                        color:Colors.primaryTextColor,
                         fontSize: {
                           xs: "18px",
-                          sm: "20px",
+                          
                         },
                       }}
                     >
@@ -304,7 +317,8 @@ const Hubs = ({ setActiveSideBar }) => {
                       component="span"
                       sx={{
                         letterSpacing: "1%",
-                        fontWeight: "400",
+                        fontWeight: "500",
+                        color:Colors.secondaryColor,
                         fontSize: {
                           xs: "12px",
                           sm: "14px",
@@ -328,6 +342,7 @@ const Hubs = ({ setActiveSideBar }) => {
                         letterSpacing: "1%",
                         fontWeight: "400",
                         lineHeight: 1.4,
+                        color:Colors.secondaryColor,
                         fontSize: {
                           xs: "12px",
                           sm: "14px",
@@ -349,10 +364,9 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 2,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#3C3C3C",
-              borderBottom: "1px solid #edeef3",
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -371,10 +385,9 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#3C3C3C",
-              borderBottom: "1px solid #edeef3",
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -393,10 +406,9 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#3C3C3C",
-              borderBottom: "1px solid #edeef3",
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -415,10 +427,9 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               p: 1,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#3C3C3C",
-              borderBottom: "1px solid #edeef3",
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -453,26 +464,30 @@ const Hubs = ({ setActiveSideBar }) => {
             width: { xs: "-webkit-fill-available", md: "25%" },
           }}
         >
+                    <Box sx={{width:'100%',mb:{xs:2}}}>
+
           <Typography
             sx={{
               fontSize: "18px",
-              color: "#3C3C3C",
-              fontWeight: "500",
+              color: Colors.primaryTextColor,
+              fontWeight: "700",
               textAlign: "left",
-              mb: 3,
+              mb:{xs:2}
             }}
           >
             Your Info
           </Typography>
+          <Divider sx={{borderColor:Colors.dividerColor}}/>
+
+          </Box>
           <Box
             sx={{
               p: 1,
               px: 2,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#3C3C3C",
-              borderBottom: "1px solid #edeef3",
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -492,10 +507,9 @@ const Hubs = ({ setActiveSideBar }) => {
               mt: 1,
               px: 2,
               width: "-webkit-fill-available",
-              bgcolor: "#f3f4f8",
               borderRadius: 2,
-              color: "#3C3C3C",
-              borderBottom: "1px solid #edeef3",
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ({allowedRoles}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const Navigate = useNavigate()
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  const navigate = useNavigate();
 
   const parseJwt = (token) => {
     try {
@@ -14,8 +16,7 @@ const ProtectedRoute = () => {
     }
   };
 
-  const validateToken = () => {
-    const token = localStorage.getItem("Token");
+  const validateToken = (token) => {
     if (token) {
       const decodedJwt = parseJwt(token);
       if (decodedJwt && decodedJwt.exp * 1000 > Date.now()) {
@@ -25,23 +26,39 @@ const ProtectedRoute = () => {
     return false;
   };
 
+  const validateAccess = () => {
+    const token = localStorage.getItem("Token");
+    const userRole = localStorage.getItem("Role");
+    if (token) {
+      const decodedJwt = parseJwt(token);
+      if (decodedJwt && allowedRoles.includes(userRole)&&validateToken(token)) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("Token");
-    if (token && validateToken()) {
+    if (validateAccess()) {
       setIsLoggedIn(true);
+      setIsAuthorized(true);
+      
     } else {
       setIsLoggedIn(false);
-      Navigate("/");
+      setIsAuthorized(false);
+      navigate("/");
     }
-    setIsLoading(false);
-  }, [localStorage.getItem("Token")]);
+  }, []);
 
-  // if (isLoading) {
-  //   return <h1>Loading...</h1>;
-  // }
+  if (!isLoggedIn) {
+    return null; // Or a loading spinner
+  }
+  if (!isAuthorized) {
+    return <h1>Unauthorized Access</h1>; // Display an unauthorized message or redirect
+  }
 
-  return isLoggedIn && <Outlet />;
+
+  return  <Outlet />;
 };
 
 export default ProtectedRoute;

@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import ProfileMenu from "../../Components/ProfileDropDown";
 import GetValidatedTokenData from "../../utils/helper";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Colors } from "../../Theme/Theme";
 
 export default function Navbar({ handleDrawerToggle, mobileOpen }) {
   const theme = useTheme();
@@ -52,13 +53,13 @@ export default function Navbar({ handleDrawerToggle, mobileOpen }) {
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
           backgroundColor: "#fff",
-          borderTop: "1px solid #e3e3e3",
-          borderBottom: "1px solid #FE2E1F",
+          // borderTop: "1px solid #e3e3e3",
+          // borderBottom: "1px solid #FE2E1F",
           height: "60px",
           display: "flex",
           alignItems: "center",
           width: "100%",
-          boxShadow: "0px 2px 12px rgba(0, 0, 0, 0.07)!important",
+          boxShadow: "0px 2px 12px rgba(0, 0, 0, 0.01)!important",
         }}
       >
         <Toolbar
@@ -120,16 +121,16 @@ export default function Navbar({ handleDrawerToggle, mobileOpen }) {
               textAlign={"start"}
               fontWeight={"400"}
               lineHeight={"14px"}
-              color={"#F47F34"}
+              color={Colors.primary}
               sx={{ cursor: "pointer" }}
             >
               {Data?.name}
             </Typography>
             <IconButton onClick={handleMenuOpen} sx={{ padding: "0px" }}>
               {menuOpen ? (
-                <ArrowDropUp sx={{ color: "#F47F34" }} />
+                <ArrowDropUp sx={{ color: Colors.primaryTextColor }} />
               ) : (
-                <ArrowDropDown sx={{ color: "#F47F34" }} />
+                <ArrowDropDown sx={{ color: Colors.primaryTextColor }} />
               )}
             </IconButton>
             {menuOpen && (

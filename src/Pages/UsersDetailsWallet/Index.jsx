@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import { SideBarWidth } from "../../utils/SideBarWidth";
 import { hub } from "../../api/requests/hubs/hubs";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import { Colors } from "../../Theme/Theme";
 
 const UsersDetailsWallet = ({ setActiveSideBar }) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -68,7 +69,6 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
   const handleAddAmount = async () => {
     if (selectedItem) {
       const numericAmount = Number(amount);
-      console.log(amount, selectedId, numericAmount, "amount,selectedId");
       try {
         const response = await hub.patchUpdateWalletDetails({
           amount: numericAmount,
@@ -81,7 +81,6 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
           alert(" Added Amount Successfully!");
         }
       } catch (error) {
-        console.log(error);
         alert("Failed To Add Amount");
       }
     } else {
@@ -191,11 +190,10 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
               variant="contained"
               color="primary"
               sx={{
-                height: "max-content",
-                "&.Mui-disabled": {
-                  bgcolor: "#d3d3d3",
-                  color: "#9e9e9e",
-                  boxShadow: "none",
+                backgroundColor: Colors.primary,
+                color: Colors.white,
+                "&:hover": {
+                  backgroundColor: Colors.hoverColorBtn,
                 },
               }}
               onClick={handleSave}
@@ -246,12 +244,10 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
               variant="contained"
               color="primary"
               sx={{
-                minWidth:'max-content',
-                height: "max-content",
-                "&.Mui-disabled": {
-                  bgcolor: "#d3d3d3",
-                  color: "#9e9e9e",
-                  boxShadow: "none",
+                backgroundColor: Colors.primary,
+                color: Colors.white,
+                "&:hover": {
+                  backgroundColor: Colors.hoverColorBtn,
                 },
               }}
               onClick={handleAddAmount}
@@ -274,115 +270,148 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
             width: { xs: "-webkit-fill-available" },
           }}
         >
-          <Typography
+         <TableContainer
+  sx={{
+    backgroundColor: Colors.white,
+    border: `1px solid ${Colors.dividerColor}`,
+    borderRadius: "8px",
+    overflowX: "auto", 
+    overflowY: "hidden",
+    width: "100%", 
+  }}
+>
+  <Typography
+    variant="h6"
+    sx={{
+      color: Colors.primaryTextColor,
+      fontWeight: "700",
+      marginBottom: "16px",
+      textAlign: "left",
+      mt: 2,
+      ml: 2,
+    }}
+  >
+    Users Wallet History
+  </Typography>
+  <Table sx={{ borderCollapse: "separate" }}>
+    <TableHead>
+      <TableRow>
+        {["Name", "Email", "Shortcode", "Level", "Hub", "Actions"].map(
+          (header) => (
+            <TableCell
+              key={header}
+              sx={{
+                color: Colors.primaryTextColor,
+                py: 1,
+                px: 2,
+                fontWeight: "600",
+                letterSpacing: "0.5px",
+                bgcolor: "#F9FBFC",
+                borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+              }}
+            >
+              {header}
+            </TableCell>
+          )
+        )}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {data?.map((item) => (
+        <React.Fragment key={item.user.id}>
+          <TableRow
+            onClick={() => handleRowClick(item.user.id)}
             sx={{
-              fontSize: "18px",
-              color: "#3C3C3C",
-              fontWeight: "500",
-              textAlign: "left",
-              mb: 2,
+              cursor: "pointer",
+              border:'none',
+              "&:hover": { backgroundColor: "#F5F5F5" },
             }}
           >
-            Users Wallet History
-          </Typography>
-          <TableContainer component={Paper}>
-            <Table sx={{ bgcolor: "#f3f4f8" }}>
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Name</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Level</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Hub</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data?.map((item) => (
-                  <React.Fragment key={item.user.id}>
-                    <TableRow
-                      onClick={() => handleRowClick(item.user.id)}
-                      sx={{ cursor: "pointer" }}
-                    >
-                      <TableCell sx={{ color: "#3C3C3C" }}>
-                        {item.user.name}
-                      </TableCell>
-                      <TableCell sx={{ color: "#3C3C3C" }}>
-                        {item.user.emailId}
-                      </TableCell>
-                      <TableCell sx={{ color: "#3C3C3C" }}>
-                        {item.level}
-                      </TableCell>
-                      <TableCell sx={{ color: "#3C3C3C" }}>
-                        {item.hubName}
-                      </TableCell>
-                      <TableCell>
-                        <IconButton
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleEdit(item);
-                          }}
-                          sx={{ bgcolor: "#ffffff" }}
-                        >
-                          <ModeEditOutlineOutlinedIcon
-                            sx={{ color: "#3C3C3C" }}
-                          />
-                        </IconButton>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan={5} sx={{ padding: 0 }}>
-                        <Collapse in={expandedRow === item.user.id}>
-                          <Box sx={{ padding: 2 }}>
-                            <Table
-                              size="small"
-                              sx={{ backgroundColor: "#333" }}
-                            >
-                              <TableHead>
-                                <TableRow>
-                                  <TableCell sx={{ color: "#ffffff" }}>
-                                    Transaction ID
-                                  </TableCell>
-                                  <TableCell sx={{ color: "#ffffff" }}>
-                                    Amount
-                                  </TableCell>
-                                  <TableCell sx={{ color: "#ffffff" }}>
-                                    Type
-                                  </TableCell>
-                                  <TableCell sx={{ color: "#ffffff" }}>
-                                    Timestamp
-                                  </TableCell>
-                                </TableRow>
-                              </TableHead>
-                              <TableBody>
-                                {item.walletHistory.map((historyItem) => (
-                                  <TableRow key={historyItem.id}>
-                                    <TableCell sx={{ color: "#ffffff" }}>
-                                      {historyItem.id}
-                                    </TableCell>
-                                    <TableCell sx={{ color: "#ffffff" }}>
-                                      {historyItem.amount}
-                                    </TableCell>
-                                    <TableCell sx={{ color: "#ffffff" }}>
-                                      {historyItem.type}
-                                    </TableCell>
-                                    <TableCell sx={{ color: "#ffffff" }}>
-                                      {new Date(
-                                        historyItem.timestamp
-                                      ).toLocaleString()}
-                                    </TableCell>
-                                  </TableRow>
-                                ))}
-                              </TableBody>
-                            </Table>
-                          </Box>
-                        </Collapse>
-                      </TableCell>
-                    </TableRow>
-                  </React.Fragment>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
+              {item.user.name}
+            </TableCell>
+            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
+              {item.user.emailId}
+            </TableCell>
+            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
+              {item.user.shortcode}
+            </TableCell>
+            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
+              {item.level}
+            </TableCell>
+            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
+              {item.hubName}
+            </TableCell>
+            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
+              <IconButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEdit(item);
+                }}
+                sx={{ bgcolor: Colors.BgColorLite }}
+              >
+                <ModeEditOutlineOutlinedIcon sx={{ color: Colors.primary }} />
+              </IconButton>
+            </TableCell>
+          </TableRow>
+          <TableRow >
+            <TableCell colSpan={6} sx={{padding: 0,borderBottom:expandedRow === item.user.id?`1px solid ${Colors.dividerColor}`:'none'}}>
+              <Collapse in={expandedRow === item.user.id}>
+                <Box sx={{ padding: 2, backgroundColor: "#F9FBFC", borderRadius: "8px" }}>
+                  <Table
+                    size="small"
+                    sx={{
+                      border: `1px solid ${Colors.tableHeaderBorder}`,
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <TableHead>
+                      <TableRow>
+                        {["Transaction ID", "Amount", "Type", "Date"]?.map((subHeader) => (
+                          <TableCell
+                            key={subHeader}
+                            sx={{
+                              color: "#3C3C3C",
+                              py: 1,
+                              px: 2,
+                              fontWeight: "600",
+                              borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                            }}
+                          >
+                            {subHeader}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {item?.walletHistory?.map((historyItem) => (
+                        <TableRow key={historyItem.id}>
+                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
+                            {historyItem.id}
+                          </TableCell>
+                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
+                            {historyItem.amount}
+                          </TableCell>
+                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
+                            {historyItem.type}
+                          </TableCell>
+                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
+                            {new Date(historyItem.timestamp).toLocaleString()}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </Box>
+              </Collapse>
+            </TableCell>
+          </TableRow>
+        </React.Fragment>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+
         </Box>
       </Box>
     </Box>

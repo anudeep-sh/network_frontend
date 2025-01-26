@@ -12,16 +12,15 @@ import {
 } from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
 import { WalletsRequests } from "../../api/requests/Wallets/wallets";
+import { Colors } from "../../Theme/Theme";
 
 export default function Transactions() {
   const [walletHistory, setWalletHistory] = useState([]);
   const handleGetwalletHistory = async () => {
     try {
       const response = await WalletsRequests.getWalletHistory();
-      setWalletHistory(response.data); // Update the state with the new data
-    } catch (error) {
-      console.log(error);
-    }
+      setWalletHistory(response.data);
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -45,34 +44,103 @@ export default function Transactions() {
           ml: { xs: 2, md: 3 },
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{ color: "#3C3C3C", marginBottom: "16px" }}
+        <TableContainer
+          sx={{
+            backgroundColor: Colors.white,
+            border: `1px solid ${Colors.dividerColor}`,
+            borderRadius: "8px",
+            overflowX: "auto", // Allow horizontal scrolling
+            overflowY: "hidden", // Optional: Hide vertical scrollbars
+            width: "100%", 
+          }}
         >
-          Wallet History
-        </Typography>
-
-        <TableContainer component={Paper} sx={{ backgroundColor: "#ffffff" }}>
-          <Table>
+          <Typography
+            variant="h6"
+            sx={{
+              color: Colors.primaryTextColor,
+              fontWeight: "700",
+              marginBottom: "16px",
+              textAlign: "left",
+              mt: 2,
+              ml: 2,
+            }}
+          >
+            Wallet History
+          </Typography>
+          <Table sx={{ borderTop: `1px solid ${Colors.tableHeaderBorder}` }}>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ color: "#3C3C3C" }}>
+                <TableCell
+                  sx={{
+                    color: Colors.primaryTextColor,
+                    py: 1,
+                    px: 2,
+                    fontWeight: "600!important",
+                    letterSpacing: "0.5px",
+                    bgcolor: "#F9FBFC",
+                    borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                  }}
+                >
                   Transaction Type
                 </TableCell>
-                <TableCell sx={{ color: "#3C3C3C" }}>Amount (Rs.)</TableCell>
-                <TableCell sx={{ color: "#3C3C3C" }}>Date</TableCell>
+                <TableCell
+                  sx={{
+                    color: Colors.primaryTextColor,
+                    py: 1,
+                    px: 2,
+                    fontWeight: "600!important",
+                    letterSpacing: "0.5px",
+                    bgcolor: "#F9FBFC",
+                    borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                  }}
+                >
+                  Amount (Rs.)
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: Colors.primaryTextColor,
+                    py: 1,
+                    px: 2,
+                    fontWeight: "600!important",
+                    letterSpacing: "0.5px",
+                    bgcolor: "#F9FBFC",
+                    borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                  }}
+                >
+                  Date
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {walletHistory?.map((transaction) => (
-                <TableRow key={transaction.id}>
-                  <TableCell sx={{ color: "#3C3C3C" }}>
+                <TableRow
+                  key={transaction.id}
+                  sx={{
+                    "&:last-child td": { borderBottom: "none" }, // Removes bottom border for the last row
+                  }}
+                >
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      borderBottom: `1px solid ${Colors.dividerColor}`,
+                    }}
+                  >
                     {transaction.type}
                   </TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      borderBottom: `1px solid ${Colors.dividerColor}`,
+                    }}
+                  >
                     {transaction.amount}
                   </TableCell>
-                  <TableCell sx={{ color: "#A1A1AA" }}>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      borderBottom: `1px solid ${Colors.dividerColor}`,
+                    }}
+                  >
                     {new Date(transaction.timestamp).toLocaleString()}
                   </TableCell>
                 </TableRow>

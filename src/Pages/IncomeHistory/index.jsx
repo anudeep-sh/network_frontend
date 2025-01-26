@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import { SideBarWidth } from "../../utils/SideBarWidth";
-import { WalletsRequests } from "../../api/requests/Wallets/wallets"; // Assuming this is where the API call is made
+import { WalletsRequests } from "../../api/requests/Wallets/wallets";
+import { Colors } from "../../Theme/Theme";
 
 export default function Withdraw() {
   const [amount, setAmount] = useState("");
 
   const handleWithdraw = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault(); 
 
     try {
-      // API call to request a withdrawal
-      console.log(amount)
       if(amount){
 
         const response = await WalletsRequests.WithdrawalRequest(  parseInt(amount));
@@ -19,7 +18,7 @@ export default function Withdraw() {
       
       if (response) {
         alert("Withdrawal request submitted successfully!");
-        setAmount(""); // Clear the input field after successful submission
+        setAmount(""); 
       } else {
         alert("Something went wrong, please try again.");
       }
@@ -54,7 +53,7 @@ export default function Withdraw() {
       >
         <Typography
           variant="h6"
-          sx={{ color: "#3C3C3C", marginBottom: "16px", textAlign: "center" }}
+          sx={{ color: Colors.primaryTextColor,fontWeight:'700', marginBottom: "16px", textAlign: "center" }}
         >
           Withdrawal Form
         </Typography>
@@ -94,9 +93,10 @@ export default function Withdraw() {
           variant="contained"
           color="primary"
           sx={{
-            backgroundColor: "#007AFF",
+            backgroundColor: Colors.primary,
+            color: Colors.white,
             "&:hover": {
-              backgroundColor: "#005BB5",
+              backgroundColor: Colors.hoverColorBtn,
             },
           }}
         >

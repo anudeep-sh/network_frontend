@@ -1,4 +1,11 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { SideBarWidth } from "../../utils/SideBarWidth";
 import GetValidatedTokenData from "../../utils/helper";
@@ -11,6 +18,7 @@ import ClaimIcon from "../../Assets/Images/insurance/claims.png";
 import OfficesIcon from "../../Assets/Images/insurance/building-office-thin.png";
 import CheckIcon from "../../Assets/Images/insurance/check.png";
 import InsuranceBenefitCard from "../../Components/InsuranceBenefitCard";
+import { Colors } from "../../Theme/Theme";
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -62,7 +70,7 @@ const InsurancePolicy = () => {
       icon: CheckIcon,
       title: "24*7 Customer Service",
       description:
-        "Call us at 7995644189 for claim intimation, telehealth services and to clear your queries.",
+        "Call us at 1800-425-2255 for claim intimation, telehealth services and to clear your queries.",
     },
     {
       icon: CheckIcon,
@@ -89,7 +97,7 @@ const InsurancePolicy = () => {
         "We've been awarded for innovative product. best claim settlement and service provider from reputed survey organisations.",
     },
   ]);
-  const [whyChooseUsData,setWhyChooseUsData]=useState( [
+  const [whyChooseUsData, setWhyChooseUsData] = useState([
     {
       icon: HospitalIcon,
       title: "1000+",
@@ -110,9 +118,9 @@ const InsurancePolicy = () => {
       title: "1000+",
       description: "Claims settled since 2024 inception",
     },
-  ])
+  ]);
   const [urc, setUrc] = useState("");
-  const [umc, setUmc] = useState(573617);
+  const [umc, setUmc] = useState(5555796);
   const [ak, setAk] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -224,7 +232,7 @@ const InsurancePolicy = () => {
   const submitHiddenForm = (postDataBase64) => {
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://www.gibl.in/wallet/validate2/";
+    form.action = "https://uatnew.gibl.in/wallet/validate2/";
     form.target = "_blank";
 
     const input = document.createElement("input");
@@ -289,7 +297,7 @@ const InsurancePolicy = () => {
             py: { xs: 3, md: 4 },
             px: { xs: 2, md: 4 },
             backgroundColor: "#ffffff",
-            borderRadius:2,
+            borderRadius: 2,
             height: "100%",
           }}
           alignItems="stretch"
@@ -316,7 +324,7 @@ const InsurancePolicy = () => {
               fontWeight={"700"}
               variant="h4"
               mb={1.5}
-              color={"#3C3C3C"}
+              color={Colors.primaryTextColor}
             >
               Insurance is the Key to Your Financial Security{" "}
             </Typography>
@@ -324,7 +332,7 @@ const InsurancePolicy = () => {
               className={"poppins-font"}
               variant="subtitle2"
               sx={{}}
-              color={"#3C3C3C"}
+              color={Colors.secondaryColor}
             >
               Comprehensive Coverage for Every Aspect of Your Life
             </Typography>
@@ -349,7 +357,7 @@ const InsurancePolicy = () => {
             py: "16px!important",
             px: "16px",
             backgroundColor: "#ffffff",
-            borderRadius:2
+            borderRadius: 2,
           }}
         >
           <Grid item xs={12} p={2} sx={{ pt: 0, mb: 2, pl: 0 }}>
@@ -357,10 +365,11 @@ const InsurancePolicy = () => {
               className={"poppins-font"}
               fontWeight={"500"}
               variant="h5"
-              sx={{ color: "#3C3C3C", textAlign: "left" }}
+              sx={{ color: Colors.primaryTextColor, textAlign: "left", mb: 2 }}
             >
               Insurance Policy
             </Typography>
+            <Divider sx={{ borderColor: Colors.dividerColor }} />
           </Grid>
           <Grid
             item
@@ -617,9 +626,10 @@ const InsurancePolicy = () => {
               className={"poppins-font"}
               color="primary"
               sx={{
-                backgroundColor: "#007AFF",
+                backgroundColor: Colors.primary,
+                color: Colors.white,
                 "&:hover": {
-                  backgroundColor: "#005BB5",
+                  backgroundColor: Colors.hoverColorBtn,
                 },
               }}
             >
@@ -634,22 +644,24 @@ const InsurancePolicy = () => {
           sx={{
             pt: { xs: 3, md: 4 },
             px: { xs: 2, md: 4 },
-            pb:2,
+            pb: 2,
             backgroundColor: "#ffffff",
             height: "100%",
-            borderRadius:2,
+            borderRadius: 2,
           }}
           alignItems="stretch"
         >
-          <Grid item xs={12} sx={{ textAlign: "left",mb:3 }}>
+          <Grid item xs={12} sx={{ textAlign: "left", mb: 3 }}>
             <Typography
               className={"poppins-font"}
               fontWeight={"500"}
               variant="h4"
-              color={"#3C3C3C"}
+              sx={{mb:{xs:2,md:3}}}
+              color={Colors.primaryTextColor}
             >
               Why Choose Us
             </Typography>
+            <Divider sx={{ borderColor: Colors.dividerColor }} />
           </Grid>
           <Grid item xs={12}>
             <Box

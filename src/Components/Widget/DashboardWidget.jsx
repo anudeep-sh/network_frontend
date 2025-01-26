@@ -1,12 +1,13 @@
 import { Box, Grid, Typography } from "@mui/material";
+import { Colors } from "../../Theme/Theme";
 
 export default function DashBoardWidget({ icon, title, value,hubs }) {
   return (
     <Box
       sx={{
         width: {
-          xs: "calc(100% / 2 - 8px)", // For xs and sm breakpoints
-          md: "calc(100% / 2 - 16px)", // For md and lg breakpoints
+          xs: "calc(100% / 1 - 8px)", 
+          md: "calc(100% / 2 - 16px)", 
         },
         mb: 2,
       }}
@@ -25,17 +26,14 @@ export default function DashBoardWidget({ icon, title, value,hubs }) {
           justifyContent: "space-between",
         }}
       >
-        <Typography
-          style={{
-            color: "#3C3C3C",
-            textAlign: "start",
-          }}
-        >
+        
+        <Box textAlign={'left'}>
           <Typography
-            component="span"
             sx={{
+              color:Colors.secondaryColor,
               letterSpacing: "1%",
               fontWeight: "400",
+              mb:'4px',
               fontSize: {
                 xs: "12px",
                 sm: "14px",
@@ -44,12 +42,11 @@ export default function DashBoardWidget({ icon, title, value,hubs }) {
           >
             {title}
           </Typography>
-          <br />
           <Typography
-            component="span"
             sx={{
               letterSpacing: "1%",
               fontWeight: "600",
+              color:Colors.primaryTextColor,
               fontSize: {
                 xs: "20px",
                 sm: "24px",
@@ -58,7 +55,7 @@ export default function DashBoardWidget({ icon, title, value,hubs }) {
           >
             {value}
           </Typography>
-        </Typography>
+          </Box>
         {hubs?<img src={icon} alt={title}  />:<img src={icon} alt={title} height={40} width={40} />}
       </Box>
     </Box>

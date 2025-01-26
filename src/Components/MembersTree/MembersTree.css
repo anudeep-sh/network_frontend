@@ -4,6 +4,6 @@
     margin: 10px;
 }
 .custom-path-style {
-  stroke: #44444A!important; /* Change this to your desired path color */
+  stroke: #5D87FF!important; /* Change this to your desired path color */
   stroke-width: 2px!important; /* Adjust the thickness */
 }

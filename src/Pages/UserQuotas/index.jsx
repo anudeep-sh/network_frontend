@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { hub } from "../../api/requests/hubs/hubs";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import CustomSelect from "../../Components/CustomSelect/CustomSelect";
+import { Colors } from "../../Theme/Theme";
 
 export default function UserQuotas({ setActiveSideBar }) {
   const [quotaData, setQuotaData] = useState([]);
@@ -30,7 +31,6 @@ export default function UserQuotas({ setActiveSideBar }) {
       setQuotaData(data.quotas);
     } catch (error) {
       alert(error?.response?.data);
-      console.log(error, "error");
     }
   };
 
@@ -44,7 +44,6 @@ export default function UserQuotas({ setActiveSideBar }) {
     if (selectedQuota) {
       const quotaValue = selectedQuota[`level${level}_quota`];
 
-      // Only set an empty string if the quotaValue is explicitly undefined or null
       setInputValue(
         quotaValue !== undefined && quotaValue !== null ? quotaValue : ""
       );
@@ -64,7 +63,6 @@ export default function UserQuotas({ setActiveSideBar }) {
           level: selectedLevel,
         });
         alert("Quota updated successfully!");
-        // Optionally, update the state with the new quota value
         setQuotaData((prevData) =>
           prevData.map((quota) =>
             quota.id === selectedQuota.id
@@ -75,7 +73,6 @@ export default function UserQuotas({ setActiveSideBar }) {
         setSelectedQuota(null);
         setInputValue("");
       } catch (error) {
-        console.log(error, "error");
         alert("Failed to update quota");
       }
     } else {
@@ -85,8 +82,8 @@ export default function UserQuotas({ setActiveSideBar }) {
 
   const handleEdit = (quota) => {
     setSelectedQuota(quota);
-    setSelectedLevel(1); // Default to Level 1
-    setInputValue(quota.level1_quota); // Set the input to Level 1 quota by default
+    setSelectedLevel(1);
+    setInputValue(quota.level1_quota);
   };
 
   return (
@@ -194,11 +191,10 @@ export default function UserQuotas({ setActiveSideBar }) {
               variant="contained"
               color="primary"
               sx={{
-                height: "max-content",
-                "&.Mui-disabled": {
-                  bgcolor: "#d3d3d3", // Color when disabled
-                  color: "#9e9e9e", // Text color when disabled
-                  boxShadow: "none", // Remove shadow when disabled
+                backgroundColor: Colors.primary,
+                color: Colors.white,
+                "&:hover": {
+                  backgroundColor: Colors.hoverColorBtn,
                 },
               }}
               onClick={handleSave}
@@ -221,62 +217,277 @@ export default function UserQuotas({ setActiveSideBar }) {
             width: { xs: "-webkit-fill-available" },
           }}
         >
-          <Typography
+          <TableContainer
             sx={{
-              fontSize: "18px",
-              color: "#3C3C3C",
-              fontWeight: "500",
-              textAlign: "left",
-              mb: 2,
+              backgroundColor: Colors.white,
+              border: `1px solid ${Colors.dividerColor}`,
+              borderRadius: "8px",
             }}
           >
-            Quotas Available
-          </Typography>
-          <TableContainer component={Paper}>
-            <Table sx={{ bgcolor: "#f3f4f8" }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: Colors.primaryTextColor,
+                fontWeight: "700",
+                marginBottom: "16px",
+                textAlign: "left",
+                mt: 2,
+                ml: 2,
+              }}
+            >
+              Quotas Available
+            </Typography>
+            <Table sx={{ borderTop: `1px solid ${Colors.tableHeaderBorder}` }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Name</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>shortcode</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Quota1</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Quota2</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Quota3</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Quota4</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Actions</TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Name
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    shortcode
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Email
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Referrer shortcode
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Referrer name
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Referrer email
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Quota1
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Quota2
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Quota3
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Quota4
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Actions
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {quotaData.map((quota) => (
-                  <TableRow key={quota.id}>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                {quotaData?.map((quota) => (
+                  <TableRow
+                    key={quota.id}
+                    sx={{
+                      "&:last-child td": { borderBottom: "none" }, // Removes bottom border for the last row
+                    }}
+                  >
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.name}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.shortcode}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.emailId}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {quota.referrer_shortcode}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {quota.referrer_name}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
+                      {quota?.referrer_email}
+                    </TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.level1_quota}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.level2_quota}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.level3_quota}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {quota.level4_quota}
                     </TableCell>
-                    <TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       <IconButton
                         onClick={() => handleEdit(quota)}
-                        sx={{ bgcolor: "#ffffff" }}
+                        sx={{ bgcolor: Colors.BgColorLite }}
                       >
                         <ModeEditOutlineOutlinedIcon
-                          sx={{ color: "#3C3C3C" }}
+                          sx={{ color: Colors.primary }}
                         />
                       </IconButton>
                     </TableCell>

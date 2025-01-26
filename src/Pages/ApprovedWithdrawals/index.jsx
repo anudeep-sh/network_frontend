@@ -16,6 +16,7 @@ import { SideBarWidth } from "../../utils/SideBarWidth";
 import { hub } from "../../api/requests/hubs/hubs";
 import { useEffect, useState } from "react";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import { Colors } from "../../Theme/Theme";
 
 export default function ApprovedWithdrawals({ setActiveSideBar }) {
   const [wallettData, setWallettData] = useState([]);
@@ -23,11 +24,9 @@ export default function ApprovedWithdrawals({ setActiveSideBar }) {
   const getPendingUserWithdrawals = async () => {
     try {
       const data = await hub.getApprovedWithdrawals();
-      console.log(data, "data");
       setWallettData(data.data);
     } catch (error) {
       alert(error?.response?.data);
-      console.log(error, "error");
     }
   };
 
@@ -74,43 +73,272 @@ export default function ApprovedWithdrawals({ setActiveSideBar }) {
             width: { xs: "-webkit-fill-available" },
           }}
         >
-          <Typography
+          <TableContainer
             sx={{
-              fontSize: "18px",
-              color: "#3C3C3C",
-              fontWeight: "500",
-              textAlign: "left",
-              mb: 2,
+              backgroundColor: Colors.white,
+              border: `1px solid ${Colors.dividerColor}`,
+              borderRadius: "8px",
             }}
           >
-           Approved Withdrawals
-          </Typography>
-          <TableContainer component={Paper}>
-            <Table sx={{ bgcolor: "#f3f4f8" }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: Colors.primaryTextColor,
+                fontWeight: "700",
+                marginBottom: "16px",
+                textAlign: "left",
+                mt: 2,
+                ml: 2,
+              }}
+            >
+              Approved Withdrawals
+            </Typography>
+            <Table sx={{ borderTop: `1px solid ${Colors.tableHeaderBorder}` }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Name</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Email</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Shortcode</TableCell>
-                  <TableCell sx={{ color: "#3C3C3C" }}>Amount</TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Name
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Email
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Shortcode
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Amount
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Status
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Pan number
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Aadhar number
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Bank account number
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Ifsc code
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Upi linkedin number
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
+                    Date
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {wallettData?.map((item) => (
                   <TableRow key={item.id}>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
                       {item.user_name}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {item.user_email}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {item.user_shortcode}
                     </TableCell>
-                    <TableCell sx={{ color: "#3C3C3C" }}>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
                       {item.amount}
                     </TableCell>
-                   
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
+                      {item.status}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {item.pan_number}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {item.aadhar_number}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {item.bank_account_number}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {item.ifsc_code}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "160px",
+                      }}
+                    >
+                      {item.upi_linkedin_number}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                        minWidth: "170px",
+                      }}
+                    >
+                      {new Date(item.timestamp).toLocaleString()}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
