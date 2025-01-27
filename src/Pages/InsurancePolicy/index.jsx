@@ -232,7 +232,7 @@ const InsurancePolicy = () => {
   const submitHiddenForm = (postDataBase64) => {
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://uatnew.gibl.in/wallet/validate2/";
+    form.action = "https://www.gibl.in/wallet/validate2/";
     form.target = "_blank";
 
     const input = document.createElement("input");
