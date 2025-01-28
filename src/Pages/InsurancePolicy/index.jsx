@@ -120,7 +120,7 @@ const InsurancePolicy = () => {
     },
   ]);
   const [urc, setUrc] = useState("");
-  const [umc, setUmc] = useState(5555796);
+  const [umc, setUmc] = useState(573617);
   const [ak, setAk] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
