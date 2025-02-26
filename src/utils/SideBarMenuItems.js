@@ -15,6 +15,7 @@ import {
   Settings,
   SupportAgent,
 } from "@mui/icons-material";
+import HospiCash from "../Pages/HospiCash";
 
 export const SideBarItems = [
   {
@@ -103,6 +104,48 @@ export const SideBarItems = [
     active: true,
     onClick: () => console.log("Transfer money"),
   },
+  {
+    Icon: (
+      <AttachMoney
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/hospi-cash",
+    title: "HospiCash",
+    active: true,
+    onClick: () => console.log("Transfer money"),
+  },
+  {
+    Icon: (
+      <AttachMoney
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/chartered-accountant",
+    title: "Chartered Accountant",
+    active: true,
+    onClick: () => console.log("Transfer money"),
+  },
+  {
+    Icon: (
+      <AttachMoney
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/loans",
+    title: "Loans",
+    active: true,
+    onClick: () => console.log("Transfer money"),
+  },
 ];
 
 export const sideBarBottomItems = [
@@ -135,7 +178,7 @@ export const sideBarBottomItems = [
       localStorage.removeItem("Role");
       localStorage.removeItem("user_details");
       console.log("Logout");
-      window.location.href = "/";
+      window.location.href = "/signin";
     },
   },
 ];

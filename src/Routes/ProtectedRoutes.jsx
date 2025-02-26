@@ -46,7 +46,7 @@ const ProtectedRoute = ({allowedRoles}) => {
     } else {
       setIsLoggedIn(false);
       setIsAuthorized(false);
-      navigate("/");
+      navigate("/signin");
     }
   }, []);
 

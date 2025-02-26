@@ -57,4 +57,32 @@ export const AdminSideBarMenuItems = [
     active: true,
     onClick: () => console.log("Referral Link"),
   },
+  {
+    Icon: (
+      <Link
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/create-form-options", 
+    title: "Create Form Options",
+    active: true,
+    onClick: () => console.log("Referral Link"),
+  },
+  {
+    Icon: (
+      <Link
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/form-responses", 
+    title: "Form Responses",
+    active: true,
+    onClick: () => console.log("Referral Link"),
+  },
 ];

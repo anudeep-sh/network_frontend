@@ -120,7 +120,7 @@ const InsurancePolicy = () => {
     },
   ]);
   const [urc, setUrc] = useState("");
-  const [umc, setUmc] = useState(573617);
+  const [umc, setUmc] = useState(5555796);
   const [ak, setAk] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -232,7 +232,7 @@ const InsurancePolicy = () => {
   const submitHiddenForm = (postDataBase64) => {
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://www.gibl.in/wallet/validate2/";
+    form.action = "https://uatnew.gibl.in/wallet/validate2/";
     form.target = "_blank";
 
     const input = document.createElement("input");

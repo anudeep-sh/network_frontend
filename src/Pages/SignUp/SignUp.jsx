@@ -207,7 +207,7 @@ const SignUp = () => {
               <Typography variant="body2" className={"poppins-font"} color={Colors.primaryTextColor}>
                 Already have an account?{" "}
                 <Link
-                  to={"/"}
+                  to={"/signin"}
                   color="primary"
                   style={{
                     textDecoration: "none",

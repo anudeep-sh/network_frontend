@@ -37,6 +37,12 @@ import ApprovedWithdrawals from "./Pages/ApprovedWithdrawals";
 import UsersDetailsWallet from "./Pages/UsersDetailsWallet/Index";
 import InsurancePolicy from "./Pages/InsurancePolicy";
 import { Colors } from "./Theme/Theme/index";
+import HospiCash from "./Pages/HospiCash";
+import CaRegistration from "./Pages/CaRegistration";
+import Loans from "./Pages/Loans";
+import CreateFormOptions from "./Pages/CreateFormOptions";
+import LandingPage from "./Pages/LandingPage";
+import FormResponses from "./Pages/FormResponses";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
@@ -93,8 +99,9 @@ function App() {
         <BrowserRouter>
           <ToastContainer />
           <Routes>
+            <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/" element={<SignIn />} />
+            <Route path="/signin" element={<SignIn />} />
             <Route
               element={<ProtectedRoute allowedRoles={["USER", "ADMIN"]} />}
             >
@@ -118,6 +125,12 @@ function App() {
                 />
                 <Route path="/withdrawal" element={<WithDrawal />} />
                 <Route path="/insurance-policy" element={<InsurancePolicy />} />
+                <Route path="/hospi-cash" element={<HospiCash />} />
+                <Route
+                  path="/chartered-accountant"
+                  element={<CaRegistration />}
+                />
+                <Route path="/loans" element={<Loans />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route element={<ProtectedRoute allowedRoles={["ADMIN"]} />}>
                   <>
@@ -134,6 +147,11 @@ function App() {
                       path="/users-detail-withdrawal"
                       element={<UsersDetailsWallet />}
                     />
+                    <Route
+                      path="/create-form-options"
+                      element={<CreateFormOptions />}
+                    />
+                    <Route path="/form-responses" element={<FormResponses />} />
                   </>
                 </Route>{" "}
                 <Route path="/support" element={<Support />} />

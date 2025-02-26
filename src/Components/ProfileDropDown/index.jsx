@@ -34,7 +34,7 @@ export default function ProfileMenu({ anchorEl, open, handleMenuClose, Data }) {
         onClick={() => {
           handleMenuClose();
           localStorage.removeItem("Token");
-          window.location.href = "/";
+          window.location.href = "/signin";
         }}
       >
         Log Out
