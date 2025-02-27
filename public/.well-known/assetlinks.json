@@ -2,7 +2,7 @@
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target": {
         "namespace": "android_app",
-        "package_name": "in.safefi.wallet.twa",
-        "sha256_cert_fingerprints": ["E2:49:04:2D:54:D9:88:1B:2F:B1:C7:6D:8C:C4:A6:BB:FB:65:E4:71:73:46:49:8B:D1:B9:20:99:5E:2E:46:22"]
+        "package_name": "com.fipaybills.twa",
+        "sha256_cert_fingerprints": ["1F:92:83:C1:5B:4A:77:D9:89:23:F7:89:F9:44:2F:43:2C:78:44:5A:98:FE:3C:E0:0E:82:05:99:69:69:36:22"]
       }
     }]
