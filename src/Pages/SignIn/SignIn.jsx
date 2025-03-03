@@ -209,8 +209,8 @@ const SignIn = () => {
               </Typography>
             </Box>
             <InputBox
-              label="Email Address"
-              placeholder={"Enter your email"}
+              label="Mobile Number"
+              placeholder={"Enter Your Mobile Number"}
               type="text"
               value={email}
               required={true}
