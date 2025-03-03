@@ -85,7 +85,7 @@ const SignUp = () => {
           } else if (data?.msg === "please signUp first") {
             setLoading(false);
             handleAlert(
-              "This email hasn't been registered try signing up",
+              "This phone Number hasn't been registered try signing up",
               "error"
             );
           }
@@ -229,12 +229,12 @@ const SignUp = () => {
               helperText={
                 usernameError && username === ""
                   ? "username is required"
-                  : usernameError && "Enter a valid email"
+                  : usernameError && "Enter a valid Phone Number"
               }
             />
             <InputBox
-              label="Email Address"
-              placeholder={"Enter your email"}
+              label="Phone Number"
+              placeholder={"Enter your Phone Number"}
               type="text"
               value={email}
               required={true}
@@ -242,8 +242,8 @@ const SignUp = () => {
               error={emailError}
               helperText={
                 emailError && email === ""
-                  ? "Email is required"
-                  : emailError && "Enter a valid email"
+                  ? "Phone Number is required"
+                  : emailError && "Enter a valid phone Number"
               }
             />
             <InputBox
