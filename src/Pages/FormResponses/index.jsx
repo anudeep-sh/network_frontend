@@ -47,7 +47,7 @@ const FormResponses = () => {
           }&limit=${rowsPerPage}&type=${selectedTab}`,
           {
             headers: {
-              Authorization: `Bearer YOUR_ACCESS_TOKEN`,
+              Authorization: `Bearer`,
             },
           }
         );

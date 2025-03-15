@@ -70,7 +70,7 @@ const InsurancePolicy = () => {
       icon: CheckIcon,
       title: "24*7 Customer Service",
       description:
-        "Call us at 1800-425-2255 for claim intimation, telehealth services and to clear your queries.",
+        "Call us at 7995644189 for claim intimation, telehealth services and to clear your queries.",
     },
     {
       icon: CheckIcon,
@@ -120,7 +120,7 @@ const InsurancePolicy = () => {
     },
   ]);
   const [urc, setUrc] = useState("");
-  const [umc, setUmc] = useState(5555796);
+  const [umc, setUmc] = useState(573617);
   const [ak, setAk] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -232,7 +232,7 @@ const InsurancePolicy = () => {
   const submitHiddenForm = (postDataBase64) => {
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://uatnew.gibl.in/wallet/validate2/";
+    form.action = "https://www.gibl.in/wallet/validate2/";
     form.target = "_blank";
 
     const input = document.createElement("input");

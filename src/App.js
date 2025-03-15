@@ -43,6 +43,7 @@ import Loans from "./Pages/Loans";
 import CreateFormOptions from "./Pages/CreateFormOptions";
 import LandingPage from "./Pages/LandingPage";
 import FormResponses from "./Pages/FormResponses";
+import FormResponseSubmitted from "./Pages/FormResponseSubmitted";
 
 function App() {
   const [activeSideBar, setActiveSideBar] = useState(false);
@@ -114,6 +115,8 @@ function App() {
                   path="/hubs"
                   element={<Hubs setActiveSideBar={setActiveSideBar} />}
                 />
+                    <Route path="/form-responses-submitted" element={<FormResponseSubmitted />} />
+
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/network" element={<Network />} />
                 <Route path="/my-referrals" element={<MyReferrals />} />

@@ -58,7 +58,7 @@ export default function UserQuotas({ setActiveSideBar }) {
     if (selectedQuota && selectedLevel) {
       try {
         await hub.postQuota({
-          userId: selectedQuota.id,
+          userId: selectedQuota.user_id,
           quota: inputValue,
           level: selectedLevel,
         });
@@ -153,6 +153,7 @@ export default function UserQuotas({ setActiveSideBar }) {
                 { value: 2, label: "Level 2" },
                 { value: 3, label: "Level 3" },
                 { value: 4, label: "Level 4" },
+                { value: 5, label: "Level 5" },
               ]}
             />
             <TextField
@@ -381,6 +382,19 @@ export default function UserQuotas({ setActiveSideBar }) {
                       borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
                     }}
                   >
+                    Quota5
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      color: Colors.primaryTextColor,
+                      py: 1,
+                      px: 2,
+                      fontWeight: "600!important",
+                      letterSpacing: "0.5px",
+                      bgcolor: "#F9FBFC",
+                      borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                    }}
+                  >
                     Actions
                   </TableCell>
                 </TableRow>
@@ -475,6 +489,14 @@ export default function UserQuotas({ setActiveSideBar }) {
                       }}
                     >
                       {quota.level4_quota}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        borderBottom: `1px solid ${Colors.dividerColor}`,
+                      }}
+                    >
+                      {quota.level5_quota}
                     </TableCell>
                     <TableCell
                       sx={{

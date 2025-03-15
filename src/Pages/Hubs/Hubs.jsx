@@ -16,11 +16,13 @@ import level1 from "../../Assets/Images/hubs/level1.svg";
 import level2 from "../../Assets/Images/hubs/level2.svg";
 import level3 from "../../Assets/Images/hubs/level3.svg";
 import level4 from "../../Assets/Images/hubs/level4.svg";
+import level5 from "../../Assets/Images/hubs/level5.svg";
 import InputBox from "../../Components/InputBox";
 import CustomSelect from "../../Components/CustomSelect/CustomSelect";
 import { hub } from "../../api/requests/hubs/hubs";
 import { ReactComponent as UserIcon } from "../../Assets/Images/person.svg";
 import { Colors } from "../../Theme/Theme";
+
 const Hubs = ({ setActiveSideBar }) => {
   const [member, setMember] = useState({ shortcode: "", level: 4 });
   const [hubsData, setHubsData] = useState([]);
@@ -33,12 +35,13 @@ const Hubs = ({ setActiveSideBar }) => {
     2: level2,
     3: level3,
     4: level4,
+    5: level5,
   };
 
   const handleGetHubs = async () => {
     try {
       const response = await hub.getHubs();
-      const values = [15000, 10000, 7000, 4500];
+      const values = [15000, 10000, 7000, 4500, 1000];
       const updatedHubsData = response.levels.map((level,index) => ({
         icon: levelImages[level.level], 
         title: level.name.replace(/_/g, " "), 
@@ -207,6 +210,7 @@ const Hubs = ({ setActiveSideBar }) => {
                 { value: 2, label: "Level 2" },
                 { value: 3, label: "Level 3" },
                 { value: 4, label: "Level 4" },
+                { value: 5, label: "Level 5" },
               ]}
             />
             <Button
@@ -441,6 +445,27 @@ const Hubs = ({ setActiveSideBar }) => {
             </Typography>
             <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
               Quotas : {quotaData?.level4_quota}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              mt: 1,
+              p: 1,
+              width: "-webkit-fill-available",
+              borderRadius: 2,
+              color: Colors.primaryTextColor,
+              border: `1px solid ${Colors.dividerColor}`,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
+              LEVEL 5
+            </Typography>
+            <Typography sx={{ fontSize: "16px", textAlign: "left" }}>
+              Quotas : {quotaData?.level5_quota}
             </Typography>
           </Box>
         </Box>

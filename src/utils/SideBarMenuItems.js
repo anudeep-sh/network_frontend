@@ -146,6 +146,20 @@ export const SideBarItems = [
     active: true,
     onClick: () => console.log("Transfer money"),
   },
+  {
+    Icon: (
+      <Link
+        sx={{
+          height: "20px",
+          width: "20px",
+        }}
+      />
+    ),
+    path: "/form-responses-submitted", 
+    title: "Submitted Form Responses",
+    active: true,
+    onClick: () => console.log("Form Response Submitted"),
+  },
 ];
 
 export const sideBarBottomItems = [
