@@ -62,16 +62,16 @@ export default function UserQuotas({ setActiveSideBar }) {
           quota: inputValue,
           level: selectedLevel,
         });
-        alert("Quota updated successfully!");
-        setQuotaData((prevData) =>
-          prevData.map((quota) =>
-            quota.id === selectedQuota.id
-              ? { ...quota, [`level${selectedLevel}_quota`]: inputValue }
-              : quota
-          )
-        );
+
+        // Fetch fresh data instead of manually updating state
+        await getQuotas();
+
+        // Reset the form
         setSelectedQuota(null);
         setInputValue("");
+        setSelectedLevel(1);
+
+        alert("Quota updated successfully!");
       } catch (error) {
         alert("Failed to update quota");
       }
