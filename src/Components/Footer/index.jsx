@@ -201,35 +201,46 @@ const Footer = ({ scrollToTab, footerRef }) => {
           </Grid>
 
           <Grid xs={12} md={4} textAlign={"left"}>
-            <Typography
-              variant="h6"
-              color="inherit"
-              sx={{ fontWeight: 600, mb: 2 }}
-            >
-              Contact Us
-            </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-              <PhoneIcon sx={{ mr: 2 }} />
-              <Typography variant="body2" color="inherit">
-                +91 8367633803
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-              <EmailIcon sx={{ mr: 2 }} />
-              <Typography variant="body2" color="inherit">
-                <Link
-                  href="mailto:support@cavashostel.com"
-                  color="inherit"
-                  underline="hover"
-                >
-                  support@fipaybills.com
-                </Link>
-              </Typography>
-              <Typography variant="body2" color="inherit">
-                Door no: 12-726, Arunodaya nagar, Ongole Village, Ongole Urban Mandal, Prakasam District-523002
-              </Typography>
-            </Box>
-          </Grid>
+  <Typography
+    variant="h6"
+    color="inherit"
+    sx={{ fontWeight: 600, mb: 2 }}
+  >
+    Contact Us
+  </Typography>
+
+  {/* Phone */}
+  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+    <PhoneIcon sx={{ mr: 2 }} />
+    <Typography variant="body2" color="inherit">
+      +91 8367633803
+    </Typography>
+  </Box>
+
+  {/* Email */}
+  <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+    <EmailIcon sx={{ mr: 2 }} />
+    <Typography variant="body2" color="inherit">
+      <Link
+        href="mailto:support@fipaybills.com"
+        color="inherit"
+        underline="hover"
+      >
+        support@fipaybills.com
+      </Link>
+    </Typography>
+  </Box>
+
+  {/* Address */}
+  <Typography
+    variant="body2"
+    color="inherit"
+    sx={{ pl: 4 }} // optional indent to align under text
+  >
+    Door no: 12-726, Arunodaya Nagar, Ongole Village, Ongole Urban Mandal, Prakasam District - 523002
+  </Typography>
+</Grid>
+
         </Grid>
 
         <Box
