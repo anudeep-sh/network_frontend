@@ -211,7 +211,7 @@ const Footer = ({ scrollToTab, footerRef }) => {
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
               <PhoneIcon sx={{ mr: 2 }} />
               <Typography variant="body2" color="inherit">
-                +91 799 564 4189
+                +91 8367633803
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
@@ -222,8 +222,11 @@ const Footer = ({ scrollToTab, footerRef }) => {
                   color="inherit"
                   underline="hover"
                 >
-                  info@fi.services
+                  support@fipaybills.com
                 </Link>
+              </Typography>
+              <Typography variant="body2" color="inherit">
+                Door no: 12-726, Arunodaya nagar, Ongole Village, Ongole Urban Mandal, Prakasam District-523002
               </Typography>
             </Box>
           </Grid>
