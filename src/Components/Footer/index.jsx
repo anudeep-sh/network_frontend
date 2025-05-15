@@ -230,15 +230,6 @@ const Footer = ({ scrollToTab, footerRef }) => {
       </Link>
     </Typography>
   </Box>
-
-  {/* Address */}
-  <Typography
-    variant="body2"
-    color="inherit"
-    sx={{ pl: 4 }} // optional indent to align under text
-  >
-    Door no: 12-726, Arunodaya Nagar, Ongole Village, Ongole Urban Mandal, Prakasam District - 523002
-  </Typography>
 </Grid>
 
         </Grid>
