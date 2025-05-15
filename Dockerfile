@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM fholzer/nginx-brotli:v1.12.2
+FROM wokalek/nginx-brotli:1.27.1
 
 WORKDIR /etc/nginx
 ADD nginx.conf /etc/nginx/nginx.conf
