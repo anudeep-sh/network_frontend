@@ -41,7 +41,7 @@ const Hubs = ({ setActiveSideBar }) => {
   const handleGetHubs = async () => {
     try {
       const response = await hub.getHubs();
-      const values = [9200, 5800, 4300, 2600, 1500];
+      const values = [10000, 590, 450, 330, 0];
       const updatedHubsData = response.levels.map((level,index) => ({
         icon: levelImages[level.level], 
         title: level.name.replace(/_/g, " "), 
