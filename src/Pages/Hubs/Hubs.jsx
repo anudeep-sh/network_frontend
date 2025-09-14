@@ -45,7 +45,7 @@ const Hubs = ({ setActiveSideBar }) => {
       const updatedHubsData = response.levels.map((level,index) => ({
         icon: levelImages[level.level], 
         title: level.name.replace(/_/g, " "), 
-        value: `Rs. ${Number(level.price)+500}`, 
+        value: `Rs. ${Number(level.price)}`, 
       }));
       setHubsData(updatedHubsData);
     } catch (error) {
