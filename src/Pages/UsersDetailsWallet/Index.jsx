@@ -9,10 +9,8 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Paper,
   IconButton,
   Collapse,
-  TableFooter,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { SideBarWidth } from "../../utils/SideBarWidth";
@@ -95,6 +93,23 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
 
   const handleRowClick = (itemId) => {
     setExpandedRow(expandedRow === itemId ? null : itemId);
+  };
+
+  const calculateTotalAmount = (walletHistory) => {
+    if (!walletHistory || walletHistory.length === 0) return 0;
+
+    return walletHistory.reduce((total, transaction) => {
+      const amount = parseFloat(transaction.amount) || 0;
+      if (transaction.type.toLowerCase() === "credit") {
+        return total + amount;
+      } else if (
+        transaction.type.toLowerCase() === "withdrawal" ||
+        transaction.type.toLowerCase() === "debit"
+      ) {
+        return total - amount;
+      }
+      return total;
+    }, 0);
   };
 
   return (
@@ -270,148 +285,267 @@ const UsersDetailsWallet = ({ setActiveSideBar }) => {
             width: { xs: "-webkit-fill-available" },
           }}
         >
-         <TableContainer
-  sx={{
-    backgroundColor: Colors.white,
-    border: `1px solid ${Colors.dividerColor}`,
-    borderRadius: "8px",
-    overflowX: "auto", 
-    overflowY: "hidden",
-    width: "100%", 
-  }}
->
-  <Typography
-    variant="h6"
-    sx={{
-      color: Colors.primaryTextColor,
-      fontWeight: "700",
-      marginBottom: "16px",
-      textAlign: "left",
-      mt: 2,
-      ml: 2,
-    }}
-  >
-    Users Wallet History
-  </Typography>
-  <Table sx={{ borderCollapse: "separate" }}>
-    <TableHead>
-      <TableRow>
-        {["Name", "Email", "Shortcode", "Level", "Hub", "Actions"].map(
-          (header) => (
-            <TableCell
-              key={header}
-              sx={{
-                color: Colors.primaryTextColor,
-                py: 1,
-                px: 2,
-                fontWeight: "600",
-                letterSpacing: "0.5px",
-                bgcolor: "#F9FBFC",
-                borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
-              }}
-            >
-              {header}
-            </TableCell>
-          )
-        )}
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {data?.map((item) => (
-        <React.Fragment key={item.user.id}>
-          <TableRow
-            onClick={() => handleRowClick(item.user.id)}
+          <TableContainer
             sx={{
-              cursor: "pointer",
-              border:'none',
-              "&:hover": { backgroundColor: "#F5F5F5" },
+              backgroundColor: Colors.white,
+              border: `1px solid ${Colors.dividerColor}`,
+              borderRadius: "8px",
+              overflowX: "auto",
+              overflowY: "hidden",
+              width: "100%",
             }}
           >
-            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
-              {item.user.name}
-            </TableCell>
-            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
-              {item.user.emailId}
-            </TableCell>
-            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
-              {item.user.shortcode}
-            </TableCell>
-            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
-              {item.level}
-            </TableCell>
-            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
-              {item.hubName}
-            </TableCell>
-            <TableCell sx={{ color: Colors.primaryTextColor, borderBottom: `1px solid ${Colors.dividerColor}` }}>
-              <IconButton
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleEdit(item);
-                }}
-                sx={{ bgcolor: Colors.BgColorLite }}
-              >
-                <ModeEditOutlineOutlinedIcon sx={{ color: Colors.primary }} />
-              </IconButton>
-            </TableCell>
-          </TableRow>
-          <TableRow >
-            <TableCell colSpan={6} sx={{padding: 0,borderBottom:expandedRow === item.user.id?`1px solid ${Colors.dividerColor}`:'none'}}>
-              <Collapse in={expandedRow === item.user.id}>
-                <Box sx={{ padding: 2, backgroundColor: "#F9FBFC", borderRadius: "8px" }}>
-                  <Table
-                    size="small"
-                    sx={{
-                      border: `1px solid ${Colors.tableHeaderBorder}`,
-                      borderRadius: "8px",
-                    }}
-                  >
-                    <TableHead>
-                      <TableRow>
-                        {["Transaction ID", "Amount", "Type", "Date"]?.map((subHeader) => (
-                          <TableCell
-                            key={subHeader}
+            <Typography
+              variant="h6"
+              sx={{
+                color: Colors.primaryTextColor,
+                fontWeight: "700",
+                marginBottom: "16px",
+                textAlign: "left",
+                mt: 2,
+                ml: 2,
+              }}
+            >
+              Users Wallet History
+            </Typography>
+            <Table sx={{ borderCollapse: "separate" }}>
+              <TableHead>
+                <TableRow>
+                  {[
+                    "Name",
+                    "Email",
+                    "Shortcode",
+                    "Level",
+                    "Hub",
+                    "Actions",
+                  ].map((header) => (
+                    <TableCell
+                      key={header}
+                      sx={{
+                        color: Colors.primaryTextColor,
+                        py: 1,
+                        px: 2,
+                        fontWeight: "600",
+                        letterSpacing: "0.5px",
+                        bgcolor: "#F9FBFC",
+                        borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                      }}
+                    >
+                      {header}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data?.map((item) => (
+                  <React.Fragment key={item.user.id}>
+                    <TableRow
+                      onClick={() => handleRowClick(item.user.id)}
+                      sx={{
+                        cursor: "pointer",
+                        border: "none",
+                        "&:hover": { backgroundColor: "#F5F5F5" },
+                      }}
+                    >
+                      <TableCell
+                        sx={{
+                          color: Colors.primaryTextColor,
+                          borderBottom: `1px solid ${Colors.dividerColor}`,
+                        }}
+                      >
+                        {item.user.name}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: Colors.primaryTextColor,
+                          borderBottom: `1px solid ${Colors.dividerColor}`,
+                        }}
+                      >
+                        {item.user.emailId}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: Colors.primaryTextColor,
+                          borderBottom: `1px solid ${Colors.dividerColor}`,
+                        }}
+                      >
+                        {item.user.shortcode}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: Colors.primaryTextColor,
+                          borderBottom: `1px solid ${Colors.dividerColor}`,
+                        }}
+                      >
+                        {item.level}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: Colors.primaryTextColor,
+                          borderBottom: `1px solid ${Colors.dividerColor}`,
+                        }}
+                      >
+                        {item.hubName}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: Colors.primaryTextColor,
+                          borderBottom: `1px solid ${Colors.dividerColor}`,
+                        }}
+                      >
+                        <IconButton
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEdit(item);
+                          }}
+                          sx={{ bgcolor: Colors.BgColorLite }}
+                        >
+                          <ModeEditOutlineOutlinedIcon
+                            sx={{ color: Colors.primary }}
+                          />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        colSpan={6}
+                        sx={{
+                          padding: 0,
+                          borderBottom:
+                            expandedRow === item.user.id
+                              ? `1px solid ${Colors.dividerColor}`
+                              : "none",
+                        }}
+                      >
+                        <Collapse in={expandedRow === item.user.id}>
+                          <Box
                             sx={{
-                              color: "#3C3C3C",
-                              py: 1,
-                              px: 2,
-                              fontWeight: "600",
-                              borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                              padding: 2,
+                              backgroundColor: "#F9FBFC",
+                              borderRadius: "8px",
                             }}
                           >
-                            {subHeader}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {item?.walletHistory?.map((historyItem) => (
-                        <TableRow key={historyItem.id}>
-                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
-                            {historyItem.id}
-                          </TableCell>
-                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
-                            {historyItem.amount}
-                          </TableCell>
-                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
-                            {historyItem.type}
-                          </TableCell>
-                          <TableCell sx={{ color: "#3C3C3C", borderBottom: "1px solid #E0E0E0" }}>
-                            {new Date(historyItem.timestamp).toLocaleString()}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </Box>
-              </Collapse>
-            </TableCell>
-          </TableRow>
-        </React.Fragment>
-      ))}
-    </TableBody>
-  </Table>
-</TableContainer>
+                            {/* Total Amount Display */}
+                            <Box
+                              sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                mb: 2,
+                                p: 2,
+                                backgroundColor: "#ffffff",
+                                borderRadius: "8px",
+                                border: `2px solid ${Colors.primary}`,
+                                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                              }}
+                            >
+                              <Typography
+                                sx={{
+                                  fontSize: "16px",
+                                  fontWeight: "600",
+                                  color: Colors.primaryTextColor,
+                                }}
+                              >
+                                Total Wallet Balance:
+                              </Typography>
+                              <Typography
+                                sx={{
+                                  fontSize: "18px",
+                                  fontWeight: "700",
+                                  color:
+                                    calculateTotalAmount(item?.walletHistory) >=
+                                    0
+                                      ? "#2E7D32"
+                                      : "#D32F2F",
+                                }}
+                              >
+                                ₹
+                                {calculateTotalAmount(
+                                  item?.walletHistory
+                                ).toFixed(2)}
+                              </Typography>
+                            </Box>
 
+                            <Table
+                              size="small"
+                              sx={{
+                                border: `1px solid ${Colors.tableHeaderBorder}`,
+                                borderRadius: "8px",
+                              }}
+                            >
+                              <TableHead>
+                                <TableRow>
+                                  {[
+                                    "Transaction ID",
+                                    "Amount",
+                                    "Type",
+                                    "Date",
+                                  ]?.map((subHeader) => (
+                                    <TableCell
+                                      key={subHeader}
+                                      sx={{
+                                        color: "#3C3C3C",
+                                        py: 1,
+                                        px: 2,
+                                        fontWeight: "600",
+                                        borderBottom: `1px solid ${Colors.tableHeaderBorder}`,
+                                      }}
+                                    >
+                                      {subHeader}
+                                    </TableCell>
+                                  ))}
+                                </TableRow>
+                              </TableHead>
+                              <TableBody>
+                                {item?.walletHistory?.map((historyItem) => (
+                                  <TableRow key={historyItem.id}>
+                                    <TableCell
+                                      sx={{
+                                        color: "#3C3C3C",
+                                        borderBottom: "1px solid #E0E0E0",
+                                      }}
+                                    >
+                                      {historyItem.id}
+                                    </TableCell>
+                                    <TableCell
+                                      sx={{
+                                        color: "#3C3C3C",
+                                        borderBottom: "1px solid #E0E0E0",
+                                      }}
+                                    >
+                                      {historyItem.amount}
+                                    </TableCell>
+                                    <TableCell
+                                      sx={{
+                                        color: "#3C3C3C",
+                                        borderBottom: "1px solid #E0E0E0",
+                                      }}
+                                    >
+                                      {historyItem.type}
+                                    </TableCell>
+                                    <TableCell
+                                      sx={{
+                                        color: "#3C3C3C",
+                                        borderBottom: "1px solid #E0E0E0",
+                                      }}
+                                    >
+                                      {new Date(
+                                        historyItem.timestamp
+                                      ).toLocaleString()}
+                                    </TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </Table>
+                          </Box>
+                        </Collapse>
+                      </TableCell>
+                    </TableRow>
+                  </React.Fragment>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Box>
       </Box>
     </Box>
