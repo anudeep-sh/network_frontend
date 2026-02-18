@@ -151,7 +151,7 @@ const SiteHeader = ({ scrollToTab, scrollToFooter }) => {
                     },
                   }}
                 >
-                  Partner Login
+                  Insurance Login
                 </Button>
               </Box>
             )}
@@ -253,7 +253,7 @@ const SiteHeader = ({ scrollToTab, scrollToFooter }) => {
                         },
                       }}
                     >
-                      Partner Login
+                      Insurance Login
                     </Button>
                   </MenuItem>
                 </Menu>
