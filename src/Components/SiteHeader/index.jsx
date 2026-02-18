@@ -127,6 +127,32 @@ const SiteHeader = ({ scrollToTab, scrollToFooter }) => {
                 >
                   Sign in
                 </Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  href="https://www.pushbutton.in/auth/role"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    backgroundImage:
+                      "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    color: "#fff",
+                    textTransform: "capitalize",
+                    fontWeight: 600,
+                    px: 2.5,
+                    borderRadius: "20px",
+                    boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      backgroundImage:
+                        "linear-gradient(135deg, #5a6fd6 0%, #6a4299 100%)",
+                      boxShadow: "0 6px 20px rgba(102, 126, 234, 0.6)",
+                      transform: "translateY(-1px)",
+                    },
+                  }}
+                >
+                  Partner Login
+                </Button>
               </Box>
             )}
 
@@ -199,6 +225,35 @@ const SiteHeader = ({ scrollToTab, scrollToFooter }) => {
                       }}
                     >
                       Sign in
+                    </Button>
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseNavMenu();
+                    }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="small"
+                      href="https://www.pushbutton.in/auth/role"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{
+                        backgroundImage:
+                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                        color: "#fff",
+                        textTransform: "capitalize",
+                        fontWeight: 600,
+                        borderRadius: "20px",
+                        boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+                        "&:hover": {
+                          backgroundImage:
+                            "linear-gradient(135deg, #5a6fd6 0%, #6a4299 100%)",
+                          boxShadow: "0 6px 20px rgba(102, 126, 234, 0.6)",
+                        },
+                      }}
+                    >
+                      Partner Login
                     </Button>
                   </MenuItem>
                 </Menu>
